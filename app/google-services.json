@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "510641692718",
+    "project_id": "l-interim",
+    "storage_bucket": "l-interim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510641692718:android:7114cfaa84a864388fffbf",
+        "android_client_info": {
+          "package_name": "com.example.linterim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9chvU0OG_q7e-5sPhNKDmpcr35nEONQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

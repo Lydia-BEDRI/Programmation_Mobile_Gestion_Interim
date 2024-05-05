@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:layout_marginTop="24dp"
+        android:elevation="8dp"
+        android:layout_marginLeft="8dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomAppBar">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Your content here -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="66dp"
+                android:saveEnabled="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Offres d'emploi"
+                        android:textColor="#0757f6"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Consulter toutes vos candidatures"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/editTextPersonName"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="0.33"
+                    android:inputType="textPersonName"
+                    android:background="@color/lightGray"
+                    android:hint="Métier"
+                    android:padding="16dp"
+                    android:textColorHint="#636363"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="8dp"
+                    />
+
+                <EditText
+                    android:id="@+id/editTextPersonNam"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="0.33"
+                    android:inputType="textPersonName"
+                    android:background="@color/lightGray"
+                    android:hint="Ville"
+                    android:padding="16dp"
+                    android:textColorHint="#636363"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="8dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/distanceSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="0.15"
+                    android:background="@color/lightGray"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginEnd="16dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="185dp"
+                        android:layout_height="2dp"
+                        android:background="@color/grey">
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Candidature(s) en cours"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="195dp"
+                        android:layout_height="2dp"
+                        android:background="@color/black">
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Candidature(s) acceptée(s)"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:padding="16dp"
+                android:paddingBottom="32dp"
+                android:background="@drawable/background_grey"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Candidature acceptée"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/background_green_fair"
+                    />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:text="Agent Logistique (h/f)"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textVie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:singleLine="false"
+                    android:text="U Express"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/textView91"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:singleLine="false"
+                    android:text="Saint-Jean-de-Védas(34)"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    >
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="1400€/mois"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"                        android:textColor="@color/white"
+                        android:background="@drawable/button_background_yellow"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="CDD"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_background_yellow"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView69"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="6 mois"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"                        android:textColor="@color/white"
+                        android:background="@drawable/button_background_yellow"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/textVi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Candidature envoyée le 29 mars 2024"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonAcepter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Accepter"
+                        android:layout_weight="1"
+                        android:layout_marginRight="16dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_background_blue"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonRefuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Refuser"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_background_blue"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Contact"
+                        android:layout_weight="1"
+                        android:layout_marginRight="16dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_background_blue"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonItineraire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Itinéraire"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_background_blue"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        tools:ignore="BottomAppBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewCandidature"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/compass" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Explorer"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil"
+                    android:layout_width="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/facebook_jobs" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Candidature"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil3"
+                    android:layout_width="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:id="@+id/textViewProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profil"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</RelativeLayout>

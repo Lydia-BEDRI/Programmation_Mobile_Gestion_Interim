@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Créer mon compte candidat"
+                android:textAlignment="center"
+                android:textColor="#0757f6"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:textSize="24sp"/>
+
+
+            <TextView
+                android:id="@+id/textViewQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vos coordonnées de connexion"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*Champs obligatoires"
+                android:textSize="15sp"
+                android:textColor="@color/red"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="24dp"/>
+
+            <EditText
+                android:id="@+id/editTextAdresseMailCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre adresse mail"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/editTextMotDePasseCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre mot de passe"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+
+            <EditText
+                android:id="@+id/editTextConfirmationMotDePasseCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Confirmer votre mot de passe"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Votre identité"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextFamilyNameCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre nom"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+            <EditText
+                android:id="@+id/editTextFirstNameCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre prénom"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_validation_insc_candidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Valider"
+                style="@android:style/Widget.Button"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"/>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

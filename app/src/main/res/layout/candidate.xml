@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="8dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomAppBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Your content here -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="299dp"
+                android:saveEnabled="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="80dp"
+                        android:text="Nouvelle offre"
+                        android:textColor="#0757f6"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@drawable/postuler"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/editTextPrenom"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:text="Lydia"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:textSize="18sp"
+                />
+            <EditText
+                android:id="@+id/editTextNom"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:text="BEDRI"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/editTextDDN"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:text="18/01/1999"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/editTextNationality"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:text="Algérienne"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="16dp"
+                 android:layout_marginRight="48dp"
+                 android:background="@drawable/background_grey"
+                 android:padding="16dp">
+                 <ImageView
+                     android:layout_width="90dp"
+                     android:layout_height="90dp"
+                     android:src="@drawable/cv"/>
+             </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/background_grey"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:src="@drawable/lettre_de_motivation"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_connexion"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="20dp"
+                android:text="Candidater maintenant"
+                style="@android:style/Widget.Button"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background_yellow"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        tools:ignore="BottomAppBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewCandidature"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/compass" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Explorer"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil"
+                    android:layout_width="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/facebook_jobs" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Candidature"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil3"
+                    android:layout_width="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:id="@+id/textViewProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profil"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</RelativeLayout>

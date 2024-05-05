@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomAppBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Your content here -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="299dp"
+                android:saveEnabled="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="48dp"
+                        android:text="Votre profil employeur"
+                        android:textColor="#0757f6"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="158dp"
+                    android:layout_height="147dp"
+                    android:layout_marginTop="112dp"
+                    android:src="@drawable/custom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/editTextEntreprise"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="U Express"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/editTextAdresseMail"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="u-express@yahoo.fr"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/editTextAdresse"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Saint-Jean-de-Védas"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/editTextNumTel"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="04 67 13 84 93"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/editTextLinkedIn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="https://www.linkedin.com/company/u-express/"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        tools:ignore="BottomAppBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewExplorer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/home" />
+
+                <TextView
+                    android:id="@+id/textViewExplorer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Acceuil"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewCandidature"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/recruiter" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Offres"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil"
+                    android:layout_width="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/facebook_jobs" />
+
+                <TextView
+                    android:id="@+id/textViewCandidature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Candidature"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewProfil3"
+                    android:layout_width="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:id="@+id/textViewProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profil"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</RelativeLayout>

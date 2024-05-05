@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Créer mon compte candidat"
+                android:textAlignment="center"
+                android:textColor="#0757f6"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:textSize="24sp"/>
+
+
+            <TextView
+                android:id="@+id/textViewQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informations facultatives"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"/>
+
+
+            <EditText
+                android:id="@+id/editTextNatiobaliteCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre notionalité"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/editTextDateNaisCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="date"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre date de naissance"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+
+            <EditText
+                android:id="@+id/editTextNumTelCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrer votre numéro de téléphone"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+
+
+
+            <EditText
+                android:id="@+id/editTextVilleCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Entrez votre ville"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_suivantInscCand2"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="48dp"
+                android:text="Suivant"
+                style="@android:style/Widget.Button"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"/>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
