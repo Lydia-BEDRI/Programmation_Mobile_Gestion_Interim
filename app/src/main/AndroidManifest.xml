@@ -47,6 +47,18 @@
             android:name=".Activity.ProfilCandidatActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.GestionCandidaturesCandidatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.GestionCandidaturesEmployeurActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.GestionOffresEmployeurActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ProfilEmployeurActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>

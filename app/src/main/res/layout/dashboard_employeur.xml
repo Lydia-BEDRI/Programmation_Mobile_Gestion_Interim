@@ -118,6 +118,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/MenuAcceuilEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -142,6 +143,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/MenuOffresEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -165,6 +167,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/MenuCandidaturesEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -188,6 +191,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/MenuProfilEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
