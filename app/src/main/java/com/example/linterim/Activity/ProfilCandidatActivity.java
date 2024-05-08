@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.linterim.R;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfilCandidatActivity extends AppCompatActivity {
     private ConstraintLayout logOut;
@@ -39,5 +42,8 @@ public class ProfilCandidatActivity extends AppCompatActivity {
                 }, 3000); // Délai en millisecondes (ici, 3000 ms = 3 secondes)
             }
         });
+       /* FirebaseDatabase.getInstance().getReference().child("Candidat").child("8").child("Prenom").setValue("Lydia");
+        Log.d("ProfilCandidatActivity", "Insertion a la bdd");*/
+
     }
 }
