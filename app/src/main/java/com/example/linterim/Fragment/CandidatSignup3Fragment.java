@@ -17,7 +17,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.linterim.Activity.DashboardCandidatActivity;
-import com.example.linterim.Activity.DashboardEmployeurActivity;
 import com.example.linterim.Helper.Candidat;
 import com.example.linterim.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -93,8 +92,6 @@ public class CandidatSignup3Fragment extends Fragment {
                         }
                         // Enregistrer le candidat dans la base de données
                         registerCandidat(candidat);
-                        Intent intent = new Intent(getActivity(), DashboardCandidatActivity.class);
-                        startActivity(intent);
                     } else {
                         Toast.makeText(getActivity(), "Veuillez remplir tous les champs obligatoires", Toast.LENGTH_SHORT).show();
                     }
@@ -122,7 +119,8 @@ public class CandidatSignup3Fragment extends Fragment {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(getActivity(), "Inscription sur la plateforme avec succès!", Toast.LENGTH_LONG).show();
-
+                                                Intent intent = new Intent(getActivity(), DashboardCandidatActivity.class);
+                                                startActivity(intent);
                                                 Log.d("CandidatSignup3Fragment", "Inscription à Realtime Database réussie !");
                                                 // Naviguer vers l'écran suivant ou afficher un message de succès
                                             } else {

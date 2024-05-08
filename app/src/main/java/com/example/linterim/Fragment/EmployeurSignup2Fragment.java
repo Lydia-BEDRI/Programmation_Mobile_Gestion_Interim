@@ -72,8 +72,6 @@ public class EmployeurSignup2Fragment extends Fragment {
                             !TextUtils.isEmpty(LienLKIN) && !TextUtils.isEmpty(SiteWeb))
                     {
                         registerEmployeFacultativeInfos(nomEntreprise,adresseMail,motDePasse,AdresseEntreprise,NumTel,SiteWeb,LienLKIN);
-                        Intent intent = new Intent(getActivity(), DashboardEmployeurActivity.class);
-                        startActivity(intent);
                     }
                 }
             }
@@ -124,6 +122,9 @@ public class EmployeurSignup2Fragment extends Fragment {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+                                                    Toast.makeText(getActivity(), "Inscription à la plateforme avec succès !", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(getActivity(), DashboardEmployeurActivity.class);
+                                                    startActivity(intent);
                                                     Log.e("EmployeurSignup2Fragment", "Inscription à Realtime réussie !", task.getException());
                                                 } else {
                                                     Log.e("EmployeurSignup2Fragment", "Inscription à Realtime échouée", task.getException());
