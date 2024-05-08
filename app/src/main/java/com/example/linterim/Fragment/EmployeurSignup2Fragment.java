@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,16 @@ public class EmployeurSignup2Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.signup_employeur_2, container, false);
 
+        ImageView backBtn = view.findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager() != null) {
+                    getFragmentManager().popBackStack();
+                }
+            }
+        });
+
         textViewAdresseEntreprise = view.findViewById(R.id.editTextAdresseEntreprise);
         textViewNumTel = view.findViewById(R.id.editTextTelEntreprise);
         textViewLienLKIN = view.findViewById(R.id.editTextLienLinkedIn);
@@ -72,6 +83,9 @@ public class EmployeurSignup2Fragment extends Fragment {
                             !TextUtils.isEmpty(LienLKIN) && !TextUtils.isEmpty(SiteWeb))
                     {
                         registerEmployeFacultativeInfos(nomEntreprise,adresseMail,motDePasse,AdresseEntreprise,NumTel,SiteWeb,LienLKIN);
+                    }else{
+                        Toast.makeText(getActivity(), "Veuillez remplir tous les champs !", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }

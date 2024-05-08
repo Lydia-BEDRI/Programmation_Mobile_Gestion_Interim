@@ -1,5 +1,6 @@
 package com.example.linterim.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.example.linterim.Activity.MainActivity;
+import com.example.linterim.Activity.SignupActivity;
 import com.example.linterim.R;
 
 public class CandidatSignup1Fragment extends Fragment {
@@ -34,13 +37,15 @@ public class CandidatSignup1Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ImageView backBtn = view.findViewById(R.id.backBtn);
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Gérer le clic sur le bouton de retour (backBtn)
-                if (getFragmentManager() != null) {
-                    getFragmentManager().popBackStack();
-                }            }
+                // Naviguer vers MainActivity
+                Intent intent = new Intent(requireActivity(), SignupActivity.class);
+                startActivity(intent);
+                requireActivity().finish(); // Facultatif : fermer le fragment actuel après la navigation
+            }
         });
 
         // Trouver les vues dans le layout

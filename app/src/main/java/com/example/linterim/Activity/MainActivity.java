@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.linterim.Fragment.TypeCompteFragment;
 import com.example.linterim.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Lancer AnonymousActivity lorsque le bouton anonyme est cliqué
-                Intent intent = new Intent(MainActivity.this, AnonymousActivity.class);
+                Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                 startActivity(intent);
             }
         });

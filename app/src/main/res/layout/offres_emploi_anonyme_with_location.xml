@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="Offres d'emploi plus récentes"
+                        android:text="Offres d'emploi basées sur votre position géographique"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -133,7 +131,7 @@
                     android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion  et de la coordination des opérations logistiques au sein de notre entreprise"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    />
+                  />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -209,118 +207,115 @@
                 </LinearLayout>
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            android:paddingBottom="32dp"
+            android:background="@drawable/background_grey"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:singleLine="true"
+                android:text="Agent Logistique (h/f)"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:singleLine="false"
+                android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion  et de la coordination des opérations logistiques au sein de notre entreprise"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
                 android:padding="16dp"
-                android:paddingBottom="32dp"
-                android:background="@drawable/background_grey"
-                android:orientation="vertical">
-
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_horizontal"
+                >
                 <TextView
-                    android:id="@+id/textView30"
+                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:singleLine="true"
-                    android:text="Agent Logistique (h/f)"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:layout_marginStart="16dp"
+                    android:text="Paris"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_background_yellow"
+                    android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView31"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:singleLine="false"
-                    android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion  et de la coordination des opérations logistiques au sein de notre entreprise"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_horizontal"
-                    >
-                    <TextView
-                        android:id="@+id/textView32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Paris"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="1400€/mois"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
-                    >
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="CDD"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView35"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="6 mois"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                    android:layout_marginStart="16dp"
+                    android:text="1400€/mois"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"                        android:textColor="@color/white"
+                    android:background="@drawable/button_background_yellow"
+                    android:textSize="18sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                >
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="CDD"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_background_yellow"
+                    android:textSize="18sp" />
 
-
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="6 mois"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"                        android:textColor="@color/white"
+                    android:background="@drawable/button_background_yellow"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+         
         </LinearLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>

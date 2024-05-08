@@ -105,6 +105,8 @@
 
 
             <LinearLayout
+                android:id="@+id/linearLayoutMeLocaliser"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -154,7 +156,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textViewAccepter"
+                    android:id="@+id/textViewAccepterLocalisation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -179,7 +181,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textViewRefuser"
+                    android:id="@+id/textViewRefuserLocalisation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"

@@ -1,5 +1,6 @@
 package com.example.linterim.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.linterim.Activity.SignupActivity;
 import com.example.linterim.R;
 
 public class EmployeurSignup1Fragment extends Fragment {
@@ -34,6 +37,18 @@ public class EmployeurSignup1Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ImageView backBtn = view.findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Naviguer vers MainActivity
+                Intent intent = new Intent(requireActivity(), SignupActivity.class);
+                startActivity(intent);
+                requireActivity().finish(); // Facultatif : fermer le fragment actuel après la navigation
+            }
+        });
 
         // Trouver les vues dans le layout
         buttonSuivant = view.findViewById(R.id.button_suivant);

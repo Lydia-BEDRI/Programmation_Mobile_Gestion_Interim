@@ -1,68 +1,53 @@
 package com.example.linterim.Activity;
 
+import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.provider.Settings;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.linterim.Fragment.OffresGeoFragment;
+import com.example.linterim.Fragment.OffresRecentesFragment;
 import com.example.linterim.R;
 
 public class AnonymousActivity extends AppCompatActivity {
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location);
+        setContentView(R.layout.anonymous);
 
-        ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Gérer le clic sur le bouton de retour (backBtn)
-                onBackPressed(); // Retour en arrière
+        // Récupération de la réponse de l'utilisateur depuis l'intent
+        boolean accepted = getIntent().getBooleanExtra("accepted", false);
+
+        // Choix du fragment à afficher en fonction de la réponse
+        Fragment fragment;
+        if (accepted) {
+            // L'utilisateur a accepté, afficher le fragment des offres selon la zone géographique
+            fragment = new OffresGeoFragment();
+
+            // Vérifier si le GPS est activé, sinon rediriger vers les paramètres
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
             }
-        });
+        } else {
+            // L'utilisateur a refusé, afficher le fragment des offres récentes
+            fragment = new OffresRecentesFragment();
+        }
 
-        // Gérer le clic sur "Me localiser"
-        ConstraintLayout meLocaliserLayout = findViewById(R.id.meLocaliserLayout);
-        meLocaliserLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Gérer le clic sur le bouton "Me localiser"
-                // Mettez ici le code pour lancer une action de localisation
-                // par exemple, démarrer un service de localisation
-                Toast.makeText(AnonymousActivity.this, "GPS ON!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Gérer le clic sur "Accepter"
-        TextView accepterTextView = findViewById(R.id.textViewAccepter);
-        accepterTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Gérer le clic sur "Accepter"
-                // Mettez ici le code pour autoriser l'accès à la localisation
-                Toast.makeText(AnonymousActivity.this, "Accepter!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        // Gérer le clic sur "Refuser"
-        TextView refuserTextView = findViewById(R.id.textViewRefuser);
-        refuserTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Gérer le clic sur "Refuser"
-                // Mettez ici le code pour refuser l'accès à la localisation
-                Toast.makeText(AnonymousActivity.this, "Refuser", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
+        // Remplacement du contenu du conteneur par le fragment choisi
+        replaceFragment(fragment);
     }
 
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerAnonymous, fragment)
+                .commit();
+    }
+}
