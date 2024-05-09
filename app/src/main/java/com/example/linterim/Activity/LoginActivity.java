@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(LoginActivity.this, DashboardEmployeurActivity.class));
+                        startActivity(new Intent(LoginActivity.this, DashboardCandidatActivity.class));
                         finish();
                     }
                 }, 3000); // Délai en millisecondes (ici, 3000 ms = 3 secondes)

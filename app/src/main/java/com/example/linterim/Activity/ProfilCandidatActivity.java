@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.linterim.Helper.MenuCandidatManager;
 import com.example.linterim.R;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,9 @@ public class ProfilCandidatActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profil_candidat);
+
+        View rootView = findViewById(android.R.id.content);
+        MenuCandidatManager.setupMenuItems(rootView,this);
 
         logOut = findViewById(R.id.buttonLogout);
         logOut.setOnClickListener(new View.OnClickListener() {
