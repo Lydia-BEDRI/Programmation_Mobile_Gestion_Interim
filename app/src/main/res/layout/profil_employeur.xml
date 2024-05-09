@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,7 +54,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/editTextEntreprise"
+                android:id="@+id/editTextNomEntreprise"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -68,9 +67,10 @@
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
-                android:id="@+id/editTextAdresseMail"
+                android:id="@+id/editTextAdresseMailEntreprise"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -83,9 +83,10 @@
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
-                android:id="@+id/editTextAdresse"
+                android:id="@+id/editTextAdresseEntreprise"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -98,9 +99,10 @@
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
-                android:id="@+id/editTextNumTel"
+                android:id="@+id/editTextNumTelEntreprise"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -113,9 +115,10 @@
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
-                android:id="@+id/editTextLinkedIn"
+                android:id="@+id/editTextSiteWebEntreprise"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -128,8 +131,60 @@
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
+            <EditText
+                android:id="@+id/editTextLinkedInEntreprise"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="https://www.linkedin.com/company/u-express/"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                android:enabled="false"
+                />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/buttonLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_background_red"
+                android:layout_marginTop="32dp">
 
+                <ImageView
+                    android:id="@+id/iconImageView"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/eteindre"
+                    android:layout_marginLeft="60dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView5"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Se Deconnecer"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="80dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iconImageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

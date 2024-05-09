@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -64,10 +63,11 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:hint="Lydia"
+                android:hint="Votre prénom"
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
                 android:id="@+id/editTextNomCandidat"
@@ -79,13 +79,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:hint="u-express@yahoo.fr"
+                android:hint="Votre nom"
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
                 />
             <EditText
-                android:id="@+id/editTextAdresseCandidat"
+                android:id="@+id/editTextMailCandidat"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -94,10 +95,43 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:hint="Saint-Jean-de-Védas"
+                android:hint="Votre adresse mail"
                 android:padding="16dp"
                 android:textColorHint="#636363"
                 android:textSize="16sp"
+                android:enabled="false"
+                />
+            <EditText
+                android:id="@+id/editTextDateNaissanceCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Votre date de naissance"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                android:enabled="false"
+                />
+            <EditText
+                android:id="@+id/editTextVilleCandidat"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:hint="Votre ville"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                android:enabled="false"
                 />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/buttonLogout"
