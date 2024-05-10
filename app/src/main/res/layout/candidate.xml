@@ -47,8 +47,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginTop="80dp"
-                        android:text="Nouvelle offre"
+                        android:textAlignment="center"
+                        android:text="Votre candidarure"
                         android:textColor="#0757f6"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -68,7 +70,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
-                android:id="@+id/editTextPrenom"
+                android:id="@+id/editTextPrenomCandidature"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -83,7 +85,7 @@
                 android:textSize="18sp"
                 />
             <EditText
-                android:id="@+id/editTextNom"
+                android:id="@+id/editTextNomCandidature"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -98,7 +100,7 @@
                 android:textStyle="bold"
                 />
             <EditText
-                android:id="@+id/editTextDDN"
+                android:id="@+id/editTextDDNCandidature"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -113,7 +115,7 @@
                 android:textStyle="bold"
                 />
             <EditText
-                android:id="@+id/editTextNationality"
+                android:id="@+id/editTextNationaliteCandidature"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -136,6 +138,7 @@
                 >
 
              <LinearLayout
+                 android:id="@+id/CVCandidature"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_marginTop="16dp"
@@ -148,6 +151,7 @@
                      android:src="@drawable/cv"/>
              </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/LettreMotCandidature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="32dp"
@@ -163,7 +167,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_connexion"
+                android:id="@+id/button_candidaterMaintenant"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="32dp"

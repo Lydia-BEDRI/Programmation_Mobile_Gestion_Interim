@@ -1,7 +1,9 @@
 package com.example.linterim.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -63,6 +65,20 @@ public class DashboardCandidatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Gestion des erreurs de récupération de données
                 Toast.makeText(DashboardCandidatActivity.this, "Une erreur s'est produite lors de la récupération des données !", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Ajouter un listener de clic sur les éléments de la liste
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Récupérer l'ID de l'offre sélectionnée
+                String offreId = arrayList.get(position).getAnnonce_id();
+
+                // Créer une intention pour ouvrir DetailsOffreActivity
+                Intent intent = new Intent(DashboardCandidatActivity.this,DetailsOffreActivity.class);
+                intent.putExtra("offreId", offreId);
+                startActivity(intent);
             }
         });
     }
