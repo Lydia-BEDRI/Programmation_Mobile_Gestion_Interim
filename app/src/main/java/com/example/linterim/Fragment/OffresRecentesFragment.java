@@ -4,15 +4,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.linterim.Helper.Offre;
+import com.example.linterim.Helper.OffreAdapter;
 import com.example.linterim.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class OffresRecentesFragment extends Fragment {
 
+    private ListView listView;
+
+    private ArrayList<Offre> arrayList;
+    private OffreAdapter offreAdapter;
+    private DatabaseReference databaseReference;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,6 +37,37 @@ public class OffresRecentesFragment extends Fragment {
 
         // You can initialize views and set up any logic here if needed
 
+        listView = view.findViewById(R.id.ListViewOffresLocalisation);
+        arrayList = new ArrayList<>();
+        offreAdapter = new OffreAdapter(getActivity(), R.layout.list_offre_item, arrayList);
+        listView.setAdapter(offreAdapter);
+
+        // Référence à la base de données Firebase Realtime
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Offres");
+
+        // Écouteur pour récupérer les données depuis Firebase
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear(); // Efface les anciennes données
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // Récupérer chaque offre de la base de données
+                    Offre offre = snapshot.getValue(Offre.class);
+                    if (offre != null) {
+                        // Ajouter l'offre à la liste
+                        arrayList.add(offre);
+                    }
+                }
+                // Notifier l'adaptateur des changements
+                offreAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Gestion des erreurs de récupération de données
+                Toast.makeText(requireContext(), "Une erreur s'est produite lors de la récupération des données ! ", Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 }

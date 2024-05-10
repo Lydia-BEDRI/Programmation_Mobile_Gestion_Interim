@@ -41,7 +41,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/textViewTitreOffreD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -68,6 +68,7 @@
 
 
             <TextView
+                android:id="@+id/textViewDescriptionOffreD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -86,7 +87,7 @@
                 android:gravity="center_horizontal"
                 >
                 <TextView
-                    android:id="@+id/textViewVille"
+                    android:id="@+id/textViewLieuOffreD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -100,7 +101,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/textViewRemunerationOffreD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -122,7 +123,7 @@
                 android:layout_marginBottom="8dp"
                 >
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/textViewTypeContratOffreD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -136,7 +137,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView69"
+                    android:id="@+id/textViewPeriodeOffreD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -151,7 +152,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_connexion"
+                android:id="@+id/button_postuler_maintenant"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="16dp"
@@ -165,6 +166,7 @@
                 android:background="@drawable/button_background_blue"/>
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -176,8 +178,18 @@
                 android:layout_marginBottom="5dp"
                 android:text="Principales missions :"
                 />
+            <TextView
+                android:id="@+id/textViewMissionsPOffreD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion et de la coordiantion des operations logistiques au sein de notre entreprise"
+                />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -188,6 +200,15 @@
                 android:textColor="@color/black"
                 android:layout_marginBottom="5dp"
                 android:text="Profil recherché :"
+                />
+            <TextView
+                android:id="@+id/textViewProfilRechOffreD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion et de la coordiantion des operations logistiques au sein de notre entreprise"
                 />
 
             <TextView
@@ -201,6 +222,15 @@
                 android:textColor="@color/black"
                 android:layout_marginBottom="5dp"
                 android:text="Condition de travail :"
+                />
+            <TextView
+                android:id="@+id/textViewConditionsTravailOffreD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion et de la coordiantion des operations logistiques au sein de notre entreprise"
                 />
         </LinearLayout>
     </ScrollView>

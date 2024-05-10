@@ -1,43 +1,53 @@
 package com.example.linterim.Helper;
-import java.util.Date;
 
 public class Offre {
-    private String annonceId;
+    private String annonce_id;
     private String titre;
     private String description;
-    private String metier;
     private String lieu;
     private String periode;
-    private double remuneration;
-    private String employeurId;
-    private Date datePublication;
+    private String remuneration;
+    private String employeur_id;
+    private String datePublication; // Utilisation de String pour les dates au format normal
+    private String profil_recherche;
+    private String missions_principales;
+    private String type_contract;
 
-    // Constructeur par défaut
+    // Constructeur par défaut requis pour Firebase
     public Offre() {
-        // Nécessaire pour Firebase (si vous utilisez Firebase pour la base de données)
+        // Constructeur vide nécessaire pour Firebase Realtime Database
     }
 
-    // Constructeur avec paramètres
-    public Offre(String annonceId, String titre, String description, String metier, String lieu,
-                 String periode, double remuneration, String employeurId, Date datePublication) {
-        this.annonceId = annonceId;
+  /*  public Offre(String annonceId, String titre, String description, String lieu, String periode, String remuneration, String employeurId, String datePublication, String profilRecherche, String missions_principales, String typeContrat) {
+        this.annonce_id = annonceId;
         this.titre = titre;
         this.description = description;
-        this.metier = metier;
         this.lieu = lieu;
         this.periode = periode;
         this.remuneration = remuneration;
-        this.employeurId = employeurId;
+        this.employeur_id = employeurId;
         this.datePublication = datePublication;
+        this.profil_recherche = profilRecherche;
+        this.missions_principales = missions_principales;
+        this.type_contrat = typeContrat;
+    }*/
+
+    public Offre(String titre, String description, String lieu, String periode, String remuneration, String typeContrat) {
+        this.titre = titre;
+        this.description = description;
+        this.lieu = lieu;
+        this.periode = periode;
+        this.remuneration = remuneration;
+        this.type_contract = typeContrat;
     }
 
-    // Getters et setters pour chaque champ
-    public String getAnnonceId() {
-        return annonceId;
+    // Getters et Setters
+    public String getAnnonce_id() {
+        return annonce_id;
     }
 
-    public void setAnnonceId(String annonceId) {
-        this.annonceId = annonceId;
+    public void setAnnonce_id(String annonce_id) {
+        this.annonce_id = annonce_id;
     }
 
     public String getTitre() {
@@ -56,14 +66,6 @@ public class Offre {
         this.description = description;
     }
 
-    public String getMetier() {
-        return metier;
-    }
-
-    public void setMetier(String metier) {
-        this.metier = metier;
-    }
-
     public String getLieu() {
         return lieu;
     }
@@ -80,27 +82,51 @@ public class Offre {
         this.periode = periode;
     }
 
-    public double getRemuneration() {
+    public String getRemuneration() {
         return remuneration;
     }
 
-    public void setRemuneration(double remuneration) {
+    public void setRemuneration(String remuneration) {
         this.remuneration = remuneration;
     }
 
-    public String getEmployeurId() {
-        return employeurId;
+    public String getEmployeur_id() {
+        return employeur_id;
     }
 
-    public void setEmployeurId(String employeurId) {
-        this.employeurId = employeurId;
+    public void setEmployeur_id(String employeur_id) {
+        this.employeur_id = employeur_id;
     }
 
-    public Date getDatePublication() {
+    public String getDatePublication() {
         return datePublication;
     }
 
-    public void setDatePublication(Date datePublication) {
+    public void setDatePublication(String datePublication) {
         this.datePublication = datePublication;
+    }
+
+    public String getProfil_recherche() {
+        return profil_recherche;
+    }
+
+    public void setProfil_recherche(String profil_recherche) {
+        this.profil_recherche = profil_recherche;
+    }
+
+    public String getMissions_principales() {
+        return missions_principales;
+    }
+
+    public void setMissions_principales(String missions_principales) {
+        this.missions_principales = missions_principales;
+    }
+
+    public String getType_contract() {
+        return type_contract;
+    }
+
+    public void setType_contract(String type_contract) {
+        this.type_contract = type_contract;
     }
 }

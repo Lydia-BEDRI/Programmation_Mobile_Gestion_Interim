@@ -59,7 +59,7 @@
             android:name=".Activity.ProfilEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.OffesActivity"
+            android:name=".Activity.OffresActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

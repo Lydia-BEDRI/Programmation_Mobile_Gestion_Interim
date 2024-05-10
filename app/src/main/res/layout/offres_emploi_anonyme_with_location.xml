@@ -1,321 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
 
-    <ScrollView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <!-- Your content here -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Your content here -->
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="66dp"
-                android:saveEnabled="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:ignore="MissingConstraints">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Offres d'emploi"
-                        android:textColor="#0757f6"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Offres d'emploi basées sur votre position géographique"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="66dp"
+            android:saveEnabled="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <EditText
-                    android:id="@+id/editTextPersonName"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="0.33"
-                    android:inputType="textPersonName"
-                    android:background="@color/lightGray"
-                    android:hint="Métier"
-                    android:padding="16dp"
-                    android:textColorHint="#636363"
-                    android:textSize="16sp"
-                    android:layout_marginEnd="8dp"
-                    />
-
-                <EditText
-                    android:id="@+id/editTextPersonNam"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="0.33"
-                    android:inputType="textPersonName"
-                    android:background="@color/lightGray"
-                    android:hint="Ville"
-                    android:padding="16dp"
-                    android:textColorHint="#636363"
-                    android:textSize="16sp"
-                    android:layout_marginEnd="8dp"
-                    />
-
-                <Spinner
-                    android:id="@+id/distanceSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="0.15"
-                    android:background="@color/lightGray"
-                    android:spinnerMode="dropdown"
-                    android:layout_marginEnd="16dp"
-                    />
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                android:padding="16dp"
-                android:paddingBottom="32dp"
-                android:background="@drawable/background_grey"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:singleLine="true"
-                    android:text="Agent Logistique (h/f)"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Offres d'emploi"
+                    android:textColor="#0757f6"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView91"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:singleLine="false"
-                    android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion  et de la coordination des opérations logistiques au sein de notre entreprise"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                  />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center_horizontal"
-                    >
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Paris"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="1400€/mois"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:gravity="center_horizontal"
-                    android:layout_marginBottom="8dp"
-                    >
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="CDD"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/textView69"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="6 mois"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"                        android:textColor="@color/white"
-                        android:background="@drawable/button_background_yellow"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Offres d'emploi basées sur votre position géographique"
+                    android:textSize="18sp" />
             </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:padding="16dp"
-            android:paddingBottom="32dp"
-            android:background="@drawable/background_grey"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
-            <TextView
-                android:id="@+id/textView56"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:singleLine="true"
-                android:text="Agent Logistique (h/f)"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView55"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:singleLine="false"
-                android:text="En tant qu'Agent Logistique, vous serez responsable de la gestion  et de la coordination des opérations logistiques au sein de notre entreprise"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+            <EditText
+                android:id="@+id/editTextPersonName"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="0.33"
+                android:inputType="textPersonName"
+                android:background="@color/lightGray"
+                android:hint="Métier"
+                android:padding="16dp"
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+            <EditText
+                android:id="@+id/editTextPersonNam"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="0.33"
+                android:inputType="textPersonName"
+                android:background="@color/lightGray"
+                android:hint="Ville"
                 android:padding="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_horizontal"
-                >
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Paris"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_background_yellow"
-                    android:textSize="18sp" />
+                android:textColorHint="#636363"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
+                />
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="1400€/mois"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"                        android:textColor="@color/white"
-                    android:background="@drawable/button_background_yellow"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="8dp"
-                >
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="CDD"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_background_yellow"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="6 mois"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"                        android:textColor="@color/white"
-                    android:background="@drawable/button_background_yellow"
-                    android:textSize="18sp" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/distanceSpinner"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/search_icon"
+                />
         </LinearLayout>
-         
-        </LinearLayout>
-    </ScrollView>
+
+
+        <ListView
+            android:id="@+id/ListViewOffresLocalisation"
+            android:layout_width="match_parent"
+            android:layout_height="490dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

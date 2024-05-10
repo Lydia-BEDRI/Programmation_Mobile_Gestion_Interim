@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfilCandidatActivity extends AppCompatActivity {
     private EditText nomEditText, prenomEditText, mailEditText,dateNaissaceEditText,villeEditText;
     private ConstraintLayout logOut;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
