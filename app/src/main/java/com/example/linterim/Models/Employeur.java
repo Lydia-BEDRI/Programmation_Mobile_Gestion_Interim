@@ -1,4 +1,4 @@
-package com.example.linterim.Helper;
+package com.example.linterim.Models;
 
 import com.google.firebase.database.DataSnapshot;
 

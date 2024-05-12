@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.linterim.Models.Offre;
 import com.example.linterim.R;
 
 import java.util.ArrayList;

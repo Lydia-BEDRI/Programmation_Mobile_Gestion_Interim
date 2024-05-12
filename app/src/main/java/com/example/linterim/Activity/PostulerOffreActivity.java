@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.linterim.Helper.Candidat;
+import com.example.linterim.Models.Candidat;
 import com.example.linterim.Helper.MenuCandidatManager;
 import com.example.linterim.R;
 import com.google.firebase.auth.FirebaseAuth;

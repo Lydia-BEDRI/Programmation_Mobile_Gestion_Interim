@@ -1,4 +1,4 @@
-package com.example.linterim.Helper;
+package com.example.linterim.Models;
 
 public class Offre {
     private String annonce_id;
@@ -8,7 +8,7 @@ public class Offre {
     private String periode;
     private String remuneration;
     private String employeur_id;
-    private String datePublication; // Utilisation de String pour les dates au format normal
+    private String date_publication; // Utilisation de String pour les dates au format normal
     private String profil_recherche;
     private String missions_principales;
     private String type_contract;
@@ -32,15 +32,29 @@ public class Offre {
         this.type_contrat = typeContrat;
     }*/
 
-    public Offre(String titre, String description, String lieu, String periode, String remuneration, String typeContrat) {
+    public Offre(String annonce_id, String date_publication, String description, String employeur_id,String lieu, String missions_principales, String periode, String profil_recherche, String remuneration, String titre,String type_contract) {
+        this.annonce_id = annonce_id;
+        this.titre = titre;
+        this.description = description;
+        this.lieu = lieu;
+        this.periode = periode;
+        this.remuneration = remuneration;
+        this.employeur_id = employeur_id;
+        this.date_publication = date_publication;
+        this.profil_recherche = profil_recherche;
+        this.missions_principales = missions_principales;
+        this.type_contract = type_contract;
+    }
+
+    public Offre(String titre, String description, String lieu, String periode, String remuneration, String typeContrat, String date_publication) {
         this.titre = titre;
         this.description = description;
         this.lieu = lieu;
         this.periode = periode;
         this.remuneration = remuneration;
         this.type_contract = typeContrat;
+        this.date_publication =date_publication;
     }
-
     // Getters et Setters
     public String getAnnonce_id() {
         return annonce_id;
@@ -98,12 +112,12 @@ public class Offre {
         this.employeur_id = employeur_id;
     }
 
-    public String getDatePublication() {
-        return datePublication;
+    public String getDate_publication() {
+        return date_publication;
     }
 
-    public void setDatePublication(String datePublication) {
-        this.datePublication = datePublication;
+    public void setDate_publication(String datePublication) {
+        this.date_publication = datePublication;
     }
 
     public String getProfil_recherche() {

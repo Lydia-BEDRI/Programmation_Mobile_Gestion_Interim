@@ -59,13 +59,19 @@
             android:name=".Activity.ProfilEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.OffresActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.DetailsOffreActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.ModifierOffreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.VoirOffreEmpActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.PostulerOffreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CreerOffreActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

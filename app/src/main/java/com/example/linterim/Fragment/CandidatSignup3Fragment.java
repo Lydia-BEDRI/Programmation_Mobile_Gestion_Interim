@@ -1,6 +1,5 @@
 package com.example.linterim.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,7 +16,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.linterim.Activity.DashboardCandidatActivity;
-import com.example.linterim.Helper.Candidat;
+import com.example.linterim.Models.Candidat;
 import com.example.linterim.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

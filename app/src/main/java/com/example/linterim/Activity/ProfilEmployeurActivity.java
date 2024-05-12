@@ -12,8 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.linterim.Helper.Candidat;
-import com.example.linterim.Helper.Employeur;
+import com.example.linterim.Models.Employeur;
 import com.example.linterim.Helper.MenuEmployeurManager;
 import com.example.linterim.R;
 import com.google.firebase.auth.FirebaseAuth;

@@ -1,4 +1,4 @@
-package com.example.linterim.Helper;
+package com.example.linterim.Models;
 
 public class Candidat {
     private String uid;           // Identifiant unique de l'utilisateur

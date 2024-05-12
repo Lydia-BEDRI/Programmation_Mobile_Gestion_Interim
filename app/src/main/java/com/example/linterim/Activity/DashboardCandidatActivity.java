@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.linterim.Helper.MenuCandidatManager;
-import com.example.linterim.Helper.MenuEmployeurManager;
-import com.example.linterim.Helper.Offre;
+import com.example.linterim.Models.Offre;
 import com.example.linterim.Helper.OffreAdapter;
 import com.example.linterim.R;
 import com.google.firebase.database.DataSnapshot;

@@ -12,8 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.linterim.Helper.Offre;
+import com.example.linterim.Helper.MenuCandidatManager;
+import com.example.linterim.Models.Offre;
 import com.example.linterim.R;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +39,9 @@ public class DetailsOffreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_offre);
+
+        View rootView = findViewById(android.R.id.content);
+        MenuCandidatManager.setupMenuItems(rootView,this);
 
         // gerer le back button
         ImageView backBtn = findViewById(R.id.backBtn);
@@ -66,6 +71,10 @@ public class DetailsOffreActivity extends AppCompatActivity {
 
             // Utiliser l'ID pour afficher les détails de l'offre correspondante
             afficherDetailsOffre(offreId);
+        }
+        if(getIntent() != null && getIntent().hasExtra("Anonyme")){
+            BottomAppBar bottomAppBar = findViewById(R.id.bottomAppBar);
+            bottomAppBar.setVisibility(View.GONE);
         }
 
         Button postulerMaintenantBtn = findViewById(R.id.button_postuler_maintenant);
