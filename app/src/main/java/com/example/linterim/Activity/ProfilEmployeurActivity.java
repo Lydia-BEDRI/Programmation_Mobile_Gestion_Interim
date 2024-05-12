@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.linterim.Models.Employeur;
-import com.example.linterim.Helper.MenuEmployeurManager;
+import com.example.linterim.Helpers.MenuEmployeurManager;
 import com.example.linterim.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

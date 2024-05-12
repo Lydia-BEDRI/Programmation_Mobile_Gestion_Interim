@@ -1,4 +1,4 @@
-package com.example.linterim.Helper;
+package com.example.linterim.Helpers;
 
         import android.content.Context;
         import android.content.Intent;
@@ -6,12 +6,8 @@ package com.example.linterim.Helper;
         import android.widget.LinearLayout;
 
         import com.example.linterim.Activity.DashboardCandidatActivity;
-        import com.example.linterim.Activity.DashboardEmployeurActivity;
         import com.example.linterim.Activity.GestionCandidaturesCandidatActivity;
-        import com.example.linterim.Activity.GestionCandidaturesEmployeurActivity;
-        import com.example.linterim.Activity.GestionOffresEmployeurActivity;
         import com.example.linterim.Activity.ProfilCandidatActivity;
-        import com.example.linterim.Activity.ProfilEmployeurActivity;
         import com.example.linterim.R;
 
 public class MenuCandidatManager {

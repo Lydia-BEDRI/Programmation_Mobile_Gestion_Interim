@@ -1,4 +1,4 @@
-package com.example.linterim.Helper;
+package com.example.linterim.Helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;

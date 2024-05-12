@@ -14,8 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.linterim.Models.Offre;
-import com.example.linterim.Helper.OffreAdapterEmp;
-import com.example.linterim.Helper.MenuEmployeurManager;
+import com.example.linterim.Helpers.OffreAdapterEmp;
+import com.example.linterim.Helpers.MenuEmployeurManager;
 import com.example.linterim.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -10,9 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.linterim.Helper.MenuCandidatManager;
+import com.example.linterim.Helpers.MenuCandidatManager;
 import com.example.linterim.Models.Offre;
-import com.example.linterim.Helper.OffreAdapter;
+import com.example.linterim.Helpers.OffreAdapter;
 import com.example.linterim.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.linterim.Helper.MenuEmployeurManager;
+import com.example.linterim.Helpers.MenuEmployeurManager;
 import com.example.linterim.R;
 
 public class GestionCandidaturesEmployeurActivity extends AppCompatActivity {

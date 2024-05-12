@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.linterim.Activity.DetailsOffreActivity;
 import com.example.linterim.Models.Offre;
-import com.example.linterim.Helper.OffreAdapter;
+import com.example.linterim.Helpers.OffreAdapter;
 import com.example.linterim.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
