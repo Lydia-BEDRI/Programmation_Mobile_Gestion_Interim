@@ -112,6 +112,7 @@
                 android:padding="16dp"
                 android:textSize="18sp"
                 android:text="18/01/1999"
+                android:hint="Entrer votre date de naissance"
                 android:textStyle="bold"
                 />
             <EditText
@@ -126,6 +127,7 @@
                 android:layout_marginStart="32dp"
                 android:padding="16dp"
                 android:textSize="18sp"
+                android:hint="Entrer votre nationalité"
                 android:text="Algérienne"
                 android:textStyle="bold"
                 />
@@ -143,12 +145,20 @@
                  android:layout_height="wrap_content"
                  android:layout_marginTop="16dp"
                  android:layout_marginRight="48dp"
+                 android:orientation="vertical"
                  android:background="@drawable/background_grey"
                  android:padding="16dp">
                  <ImageView
                      android:layout_width="90dp"
                      android:layout_height="90dp"
                      android:src="@drawable/cv"/>
+                 <TextView
+                     android:id="@+id/textview_infoCV"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:singleLine="true"
+                     android:text="Aucun fichier"/>
+
              </LinearLayout>
                 <LinearLayout
                     android:id="@+id/LettreMotCandidature"
@@ -156,15 +166,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="16dp"
+                    android:orientation="vertical"
                     android:background="@drawable/background_grey"
                     android:padding="16dp">
                     <ImageView
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         android:src="@drawable/lettre_de_motivation"/>
+                    <TextView
+                        android:id="@+id/textview_infoLettreMotiv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:layout_height="wrap_content"
+                        android:text="Aucun fichier"/>
                 </LinearLayout>
 
             </LinearLayout>
+
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_candidaterMaintenant"

@@ -16,5 +16,7 @@ public class GestionCandidaturesCandidatActivity extends AppCompatActivity {
         setContentView(R.layout.gestion_candidature_en_cours_user);
         View rootView = findViewById(android.R.id.content);
         MenuCandidatManager.setupMenuItems(rootView,this);
+
+
     }
 }

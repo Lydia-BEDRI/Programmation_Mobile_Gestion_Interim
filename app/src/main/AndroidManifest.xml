@@ -20,6 +20,12 @@
             android:name=".Activity.BaseActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.ContactCandidatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.VoirCandidatureEmpActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.LoginActivity"
             android:exported="false" />
         <activity
