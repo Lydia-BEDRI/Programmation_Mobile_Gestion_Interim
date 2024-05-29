@@ -180,17 +180,9 @@ public class CandidatSignup3Fragment extends Fragment {
                             // Récupérer l'ID de l'utilisateur authentifié
                             String candidatId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                            // Référence à la base de données Firebase
-                            DatabaseReference candidatRef = FirebaseDatabase.getInstance().getReference().child("Candidats");
-
-                            // Ajouter le candidat à la base de données et obtenir l'ID généré automatiquement
-                            String newCandidatId = candidatRef.push().getKey();
-
-                            // Assigner cet ID à l'instance de candidat
-                            candidat.setUid(newCandidatId);
-
                             // Enregistrer les informations dans la base de données
-                            candidatRef.child(newCandidatId).setValue(candidat)
+                            FirebaseDatabase.getInstance().getReference().child("Candidats")
+                                    .child(candidatId).setValue(candidat)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
