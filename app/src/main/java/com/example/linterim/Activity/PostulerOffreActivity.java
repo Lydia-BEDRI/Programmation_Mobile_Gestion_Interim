@@ -18,13 +18,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.linterim.Models.Candidat;
 import com.example.linterim.Helpers.MenuCandidatManager;
+import com.example.linterim.Models.Candidature;
 import com.example.linterim.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,10 +43,11 @@ public class PostulerOffreActivity extends AppCompatActivity {
 
     private StorageReference storageReferenceCV, storageReferenceLettreM;
 
-    private Uri selectedCVURI,selectedLettreMURI;
+    private Uri selectedCVURI, selectedLettreMURI;
 
-    private ActivityResultLauncher<Intent> resultLauncher;
-    private static final int PICK_PDF_REQUEST = 1;
+    private ActivityResultLauncher<Intent> resultLauncherCV;
+    private ActivityResultLauncher<Intent> resultLauncherLettreM;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class PostulerOffreActivity extends AppCompatActivity {
         setContentView(R.layout.candidate);
 
         View rootView = findViewById(android.R.id.content);
-        MenuCandidatManager.setupMenuItems(rootView,this);
+        MenuCandidatManager.setupMenuItems(rootView, this);
 
         // gerer le back button
         ImageView backBtn = findViewById(R.id.backBtn);
@@ -67,9 +68,9 @@ public class PostulerOffreActivity extends AppCompatActivity {
         });
 
         nom = findViewById(R.id.editTextNomCandidature);
-        prenom= findViewById(R.id.editTextPrenomCandidature);
+        prenom = findViewById(R.id.editTextPrenomCandidature);
         dateNaissace = findViewById(R.id.editTextDDNCandidature);
-        nationalite = findViewById(R.id.editTextNationaliteCandidature);
+        nationalite = findViewById(                R.id.editTextNationaliteCandidature);
         cv = findViewById(R.id.CVCandidature);
         lettreMotivation = findViewById(R.id.LettreMotCandidature);
         infoCV = findViewById(R.id.textview_infoCV);
@@ -97,33 +98,24 @@ public class PostulerOffreActivity extends AppCompatActivity {
                             nationalite.setText(candidat.getNationalite());
                             String urlCv = candidat.getCvUrl();
                             int longueurMaxAffichee = 10; // par exemple, vous pouvez spécifier 10 caractères max à afficher
-                            String urlTronquee = urlCv.substring(0, longueurMaxAffichee) + "...";
+                            String urlTronquee = urlCv != null ? urlCv.substring(0, Math.min(urlCv.length(), longueurMaxAffichee)) + "..." : "";
                             infoCV.setText(urlTronquee);
 
                             // gérer la modif du CV
                             cv.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                   storageReferenceCV =  uploadCV();
-                                   candidat.setCvUrl(storageReferenceCV.toString());
-                                    String urlCv = candidat.getCvUrl();
-                                    String urlTronquee = urlCv.substring(0, longueurMaxAffichee) + "...";
-                                   infoCV.setText(urlTronquee);
+                                    openFilePicker(resultLauncherCV);
                                 }
                             });
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////:::
                             // gérer l'ajout de la lettre de motiv
                             lettreMotivation.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    storageReferenceLettreM =  uploadCV();
-
+                                    openFilePicker(resultLauncherLettreM);
                                 }
                             });
-
                         }
                     } else {
                         // Aucune donnée trouvée pour ce candidat
@@ -139,62 +131,154 @@ public class PostulerOffreActivity extends AppCompatActivity {
             });
         }
 
+        resultLauncherCV = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        selectedCVURI = result.getData().getData();
+                        uploadFile(selectedCVURI, "CVs", infoCV);
+                    }
+                }
+        );
+
+        resultLauncherLettreM = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        selectedLettreMURI = result.getData().getData();
+                        uploadFile(selectedLettreMURI, "Letters", infoLettreMotiv);
+                    }
+                }
+        );
+
+        AppCompatButton candidaterMaintenantButton = findViewById(R.id.button_candidaterMaintenant);
+        candidaterMaintenantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Récupérer les valeurs des champs de saisie
+                String updatedNom = nom.getText().toString().trim();
+                String updatedPrenom = prenom.getText().toString().trim();
+                String updatedDateNaissance = dateNaissace.getText().toString().trim();
+                String updatedNationalite = nationalite.getText().toString().trim();
+
+                // Mettre à jour les informations du candidat dans Firebase
+                updateCandidatInfo(updatedNom, updatedPrenom, updatedDateNaissance, updatedNationalite);
+            }
+        });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==PICK_PDF_REQUEST && resultCode == RESULT_OK){
-            selectedCVURI = data.getData();
-            openFilePicker();
-        }
-    }
-
-    private void openFilePicker() {
-        Intent intent = new Intent();
+    private void openFilePicker(ActivityResultLauncher<Intent> resultLauncher) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("application/pdf");
-      //  intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        resultLauncher.launch(Intent.createChooser(intent, "Select PDF"));    }
-    private StorageReference uploadCV() {
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading");
-        progressDialog.show();
+        resultLauncher.launch(Intent.createChooser(intent, "Select PDF"));
+    }
 
-        if (selectedCVURI != null) {
-            storageReferenceCV = FirebaseStorage.getInstance().getReference().child("CVs").child(String.valueOf(System.currentTimeMillis()) + ".pdf");
+    private void uploadFile(Uri fileUri, String folder, TextView infoTextView) {
+        if (fileUri != null) {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Uploading");
+            progressDialog.show();
 
-            // Mettre en œuvre le téléversement du fichier
-            storageReferenceCV.putFile(selectedCVURI)
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(folder).child(System.currentTimeMillis() + ".pdf");
+            storageReference.putFile(fileUri)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Si le téléversement est réussi, récupérer l'URL de téléchargement
-                            storageReferenceCV.getDownloadUrl().addOnSuccessListener(uri -> {
+                            storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
                                 String url = uri.toString();
                                 Log.d("DownloadURL", url);
                                 progressDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Fichier téléversé avec succès", Toast.LENGTH_SHORT).show();
+                                String urlTronquee = url.substring(0, Math.min(url.length(), 10)) + "...";
+                                infoTextView.setText(urlTronquee);
                             }).addOnFailureListener(e -> {
-                                // En cas d'échec de récupération de l'URL de téléchargement
                                 progressDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Erreur lors de la récupération de l'URL de téléchargement", Toast.LENGTH_SHORT).show();
                             });
                         } else {
-                            // En cas d'échec du téléversement du fichier
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Erreur lors du téléversement du fichier", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
-            // Si aucun fichier n'a été sélectionné
-            progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Aucun fichier sélectionné", Toast.LENGTH_SHORT).show();
         }
-
-        // Retourner la référence de stockage
-        return storageReferenceCV;
     }
 
-}
+    private void updateCandidatInfo(String nom, String prenom, String dateNaissance, String nationalite) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DatabaseReference candidatRef = FirebaseDatabase.getInstance().getReference().child("Candidats").child(userId);
 
+            candidatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        Candidat candidat = dataSnapshot.getValue(Candidat.class);
+                        if (candidat != null) {
+                            candidat.setNom(nom);
+                            candidat.setPrenom(prenom);
+                            candidat.setDateNaissance(dateNaissance);
+                            candidat.setNationalite(nationalite);
+
+                            // Ajouter l'URL du CV s'il existe
+                            if (selectedCVURI != null) {
+                                candidat.setCvUrl(selectedCVURI.toString());
+                            }
+
+                            candidatRef.setValue(candidat).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    // Les informations du candidat ont été mises à jour avec succès
+                                    Toast.makeText(PostulerOffreActivity.this, "Informations personnelles du profil sont mises à jour !", Toast.LENGTH_SHORT).show();
+                                    // Créer une nouvelle candidature
+                                    createCandidature(userId);
+                                } else {
+                                    // Une erreur s'est produite lors de la mise à jour des informations
+                                    Toast.makeText(PostulerOffreActivity.this, "Erreur de mise à jour des informations", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    } else {
+                        Toast.makeText(PostulerOffreActivity.this, "Erreur lors de la récupération des informations du candidat", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(PostulerOffreActivity.this, "Erreur de mise à jour des informations", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private void createCandidature(String candidatId) {
+        String offreId = getIntent().getStringExtra("offreId");
+        if (offreId == null) {
+            Toast.makeText(this, "ID de l'offre manquant", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        DatabaseReference candidaturesRef = FirebaseDatabase.getInstance().getReference().child("Candidatures");
+        String candidatureId = candidaturesRef.push().getKey();
+
+        Candidature nouvelleCandidature = new Candidature();
+        nouvelleCandidature.setCandidature_id(candidatureId);
+        nouvelleCandidature.setOffre_id(offreId);
+        nouvelleCandidature.setCandidat_id(candidatId);
+        nouvelleCandidature.setLettre_motivation(selectedLettreMURI != null ? selectedLettreMURI.toString() : "");
+        nouvelleCandidature.setStatut("En attente");
+        nouvelleCandidature.setDate_candidature(String.valueOf(System.currentTimeMillis()));
+
+        candidaturesRef.child(candidatureId).setValue(nouvelleCandidature).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // La candidature a été créée avec succès
+                Toast.makeText(PostulerOffreActivity.this, "Candidature envoyée avec succès", Toast.LENGTH_SHORT).show();
+            } else {
+                // Une erreur s'est produite lors de la création de la candidature
+                Toast.makeText(PostulerOffreActivity.this, "Erreur lors de l'envoi de la candidature", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
 

@@ -84,6 +84,8 @@ public class DetailsOffreActivity extends AppCompatActivity {
                 if (isUserAuthenticated()) {
                     // L'utilisateur est authentifié, lancer PostulerOffreActivity
                     Intent intent = new Intent(DetailsOffreActivity.this, PostulerOffreActivity.class);
+                    String offreId = getIntent().getStringExtra("offreId");
+                    intent.putExtra("offreId", offreId);
                     startActivity(intent);
                 } else {
                     // Afficher un toast demandant à l'utilisateur de s'inscrire ou de s'authentifier
@@ -95,6 +97,7 @@ public class DetailsOffreActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     // Méthode pour afficher les détails de l'offre correspondante
