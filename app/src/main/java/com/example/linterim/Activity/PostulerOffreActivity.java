@@ -36,6 +36,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class PostulerOffreActivity extends AppCompatActivity {
     private EditText nom, prenom, dateNaissace, nationalite;
     private LinearLayout cv, lettreMotivation;
@@ -268,17 +272,27 @@ public class PostulerOffreActivity extends AppCompatActivity {
         nouvelleCandidature.setCandidat_id(candidatId);
         nouvelleCandidature.setLettre_motivation(selectedLettreMURI != null ? selectedLettreMURI.toString() : "");
         nouvelleCandidature.setStatut("En attente");
-        nouvelleCandidature.setDate_candidature(String.valueOf(System.currentTimeMillis()));
+
+        // Format the current date as jj/mm/aaaa
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        nouvelleCandidature.setDate_candidature(currentDate);
 
         candidaturesRef.child(candidatureId).setValue(nouvelleCandidature).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 // La candidature a été créée avec succès
                 Toast.makeText(PostulerOffreActivity.this, "Candidature envoyée avec succès", Toast.LENGTH_SHORT).show();
+
+                // Redirection vers GestionCandidaturesCandidatActivity
+                Intent intent = new Intent(PostulerOffreActivity.this, GestionCandidaturesCandidatActivity.class);
+                startActivity(intent);
+                finish(); // Optionnel : fermer l'activité actuelle
             } else {
                 // Une erreur s'est produite lors de la création de la candidature
                 Toast.makeText(PostulerOffreActivity.this, "Erreur lors de l'envoi de la candidature", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
+
 
