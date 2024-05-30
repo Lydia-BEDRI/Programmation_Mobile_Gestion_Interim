@@ -1,0 +1,126 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="16dp"
+    android:padding="16dp"
+    android:paddingBottom="32dp"
+    android:background="@drawable/background_grey"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:text="Candidature en cours"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_blue_sky"
+        />
+
+    <TextView
+        android:id="@+id/titreMetier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:singleLine="true"
+        android:text="Agent Logistique (h/f)"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nomEntreprise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:singleLine="false"
+        android:text="U Express"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/adresseEntreprise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:singleLine="false"
+        android:text="Saint-Jean-de-Védas(34)"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        >
+        <TextView
+            android:id="@+id/remuneration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="1400€/mois"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"                        android:textColor="@color/white"
+            android:background="@drawable/button_background_yellow"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/typeContrat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="CDD"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_background_yellow"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/duree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:singleLine="true"
+            android:text="6 mois"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"                        android:textColor="@color/white"
+            android:background="@drawable/button_background_yellow"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/dateCandidature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:text="Candidature envoyée le 29 mars 2024"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonVoir"
+        android:layout_marginTop="16dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Voir"
+        android:textStyle="bold"
+        android:background="@drawable/button_background_blue"
+        android:textColor="@color/white"
+        android:layout_marginBottom="8dp"
+        />
+</LinearLayout>
