@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfilCandidatActivity extends AppCompatActivity {
     private EditText nomEditText, prenomEditText, mailEditText,dateNaissaceEditText,villeEditText;
-    private ConstraintLayout logOut;
+    private ConstraintLayout logOut,Msg;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +34,14 @@ public class ProfilCandidatActivity extends AppCompatActivity {
         View rootView = findViewById(android.R.id.content);
         MenuCandidatManager.setupMenuItems(rootView,this);
 
+        Msg = findViewById(R.id.Msg);
         logOut = findViewById(R.id.buttonLogout);
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(ProfilCandidatActivity.this, "Deconnexion avec succès", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfilCandidatActivity.this, "Déconnexion avec succès", Toast.LENGTH_SHORT).show();
 
                 // Utiliser un Handler pour introduire un délai avant de passer à l'activité suivante
                 new Handler().postDelayed(new Runnable() {
@@ -49,6 +51,20 @@ public class ProfilCandidatActivity extends AppCompatActivity {
                         finish(); // Optionnel : fermer l'activité actuelle
                     }
                 }, 3000); // Délai en millisecondes (ici, 3000 ms = 3 secondes)
+            }
+        });
+
+        Msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                String userId = currentUser.getUid();
+
+                Intent intent = new Intent(ProfilCandidatActivity.this, MessagesCandidatActivity.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+                finish();
             }
         });
         nomEditText = findViewById(R.id.editTextNomCandidat);

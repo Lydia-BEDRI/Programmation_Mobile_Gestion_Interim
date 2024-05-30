@@ -1,5 +1,6 @@
 package com.example.linterim.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,8 +32,9 @@ public class ProfilEmployeurActivity extends AppCompatActivity {
     private EditText editTextSiteWebEntreprise;
     private EditText editTextLinkedInEntreprise;
 
-    private ConstraintLayout logOut;
+    private ConstraintLayout logOut,Msg;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +50,27 @@ public class ProfilEmployeurActivity extends AppCompatActivity {
         editTextSiteWebEntreprise = findViewById(R.id.editTextSiteWebEntreprise);
         editTextLinkedInEntreprise = findViewById(R.id.editTextLinkedInEntreprise);
 
+        Msg = findViewById(R.id.Msg);
+        Msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                String userId = currentUser.getUid();
+
+                Intent intent = new Intent(ProfilEmployeurActivity.this, MessagesEmpActivity.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         logOut = findViewById(R.id.buttonLogout);
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(ProfilEmployeurActivity.this, "Deconnexion avec succès", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfilEmployeurActivity.this, "Déconnexion avec succès", Toast.LENGTH_SHORT).show();
 
                 // Utiliser un Handler pour introduire un délai avant de passer à l'activité suivante
                 new Handler().postDelayed(new Runnable() {

@@ -36,6 +36,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -74,7 +75,7 @@ public class PostulerOffreActivity extends AppCompatActivity {
         nom = findViewById(R.id.editTextNomCandidature);
         prenom = findViewById(R.id.editTextPrenomCandidature);
         dateNaissace = findViewById(R.id.editTextDDNCandidature);
-        nationalite = findViewById(                R.id.editTextNationaliteCandidature);
+        nationalite = findViewById(R.id.editTextNationaliteCandidature);
         cv = findViewById(R.id.CVCandidature);
         lettreMotivation = findViewById(R.id.LettreMotCandidature);
         infoCV = findViewById(R.id.textview_infoCV);
@@ -223,7 +224,18 @@ public class PostulerOffreActivity extends AppCompatActivity {
                         if (candidat != null) {
                             candidat.setNom(nom);
                             candidat.setPrenom(prenom);
-                            candidat.setDateNaissance(dateNaissance);
+
+                            // Formater la date de naissance au format jj/mm/aaaa
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                            try {
+                                Date formattedDate = dateFormat.parse(dateNaissance);
+                                candidat.setDateNaissance(dateFormat.format(formattedDate));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                                // En cas d'erreur de formatage, utiliser la date d'origine
+                                candidat.setDateNaissance(dateNaissance);
+                            }
+
                             candidat.setNationalite(nationalite);
 
                             // Ajouter l'URL du CV s'il existe
@@ -272,27 +284,16 @@ public class PostulerOffreActivity extends AppCompatActivity {
         nouvelleCandidature.setCandidat_id(candidatId);
         nouvelleCandidature.setLettre_motivation(selectedLettreMURI != null ? selectedLettreMURI.toString() : "");
         nouvelleCandidature.setStatut("En attente");
-
-        // Format the current date as jj/mm/aaaa
-        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-        nouvelleCandidature.setDate_candidature(currentDate);
+        nouvelleCandidature.setDate_candidature(String.valueOf(System.currentTimeMillis()));
 
         candidaturesRef.child(candidatureId).setValue(nouvelleCandidature).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 // La candidature a été créée avec succès
                 Toast.makeText(PostulerOffreActivity.this, "Candidature envoyée avec succès", Toast.LENGTH_SHORT).show();
-
-                // Redirection vers GestionCandidaturesCandidatActivity
-                Intent intent = new Intent(PostulerOffreActivity.this, GestionCandidaturesCandidatActivity.class);
-                startActivity(intent);
-                finish(); // Optionnel : fermer l'activité actuelle
             } else {
                 // Une erreur s'est produite lors de la création de la candidature
                 Toast.makeText(PostulerOffreActivity.this, "Erreur lors de l'envoi de la candidature", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }
-
-

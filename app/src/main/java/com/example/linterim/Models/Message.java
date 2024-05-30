@@ -8,6 +8,7 @@ public class Message {
     private String offreId;
     private String date;
 
+
     // Constructeur
     public Message(String type, String senderId, String recipientId, String content, String offreId, String date) {
         this.type = type;
@@ -16,6 +17,9 @@ public class Message {
         this.content = content;
         this.offreId = offreId;
         this.date = date;
+    }
+    public Message() {
+
     }
 
     // Getters et Setters
