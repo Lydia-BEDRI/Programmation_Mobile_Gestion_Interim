@@ -93,6 +93,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        style="@android:style/Widget.Button"
         android:id="@+id/buttonVoirCandidature"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"

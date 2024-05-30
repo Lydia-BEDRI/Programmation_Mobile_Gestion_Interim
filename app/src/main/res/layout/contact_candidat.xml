@@ -48,7 +48,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="5dp"
-                        android:text="Contacter votre employeur"
+                        android:text="Contacter le candidat"
                         android:textColor="#0757f6"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -68,7 +68,7 @@
 
             <!-- EditTexts -->
             <EditText
-                android:id="@+id/editTextNomEntreprise"
+                android:id="@+id/editTextNomPrenomCandidat"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="32dp"
@@ -76,7 +76,7 @@
                 android:background="@drawable/edittext_background"
                 android:editable="false"
                 android:ems="10"
-                android:hint="Nom de l'entreprise"
+                android:hint="Nom et Prénom du candidat"
                 android:inputType="textPersonName"
                 android:padding="16dp"
                 android:textColorHint="#636363"
@@ -128,10 +128,33 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:id="@+id/MenuAcceuilEmp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageViewExplorer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/home" />
+
+                <TextView
+                    android:id="@+id/textViewExplorer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Acceuil"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/MenuExplorerCandidat"
+                android:id="@+id/MenuOffresEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -142,20 +165,20 @@
                     android:id="@+id/imageViewCandidature"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/compass" />
+                    android:src="@drawable/recruiter" />
 
                 <TextView
                     android:id="@+id/textViewCandidature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Explorer"
+                    android:text="Offres"
                     android:textAlignment="center"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/MenuCandidatureCandidat"
+                android:id="@+id/MenuCandidaturesEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -179,7 +202,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/MenuProfilCandidat"
+                android:id="@+id/MenuProfilEmp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

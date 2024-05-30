@@ -220,7 +220,7 @@ public class CandAcceptUserAdapter extends ArrayAdapter<Candidature> {
         String messageId = mMessagesRef.push().getKey();
 
         if (messageId != null) {
-            mMessagesRef.child(messageId).setValue(new Message("notification", employeurId, message, candidatId, offreId, getCurrentFormattedDate()));
+            mMessagesRef.child(messageId).setValue(new Message("notification",candidatId, employeurId, message, offreId, getCurrentFormattedDate()));
         }
     }
     private void removeCandidature(Candidature candidature) {
@@ -233,7 +233,7 @@ public class CandAcceptUserAdapter extends ArrayAdapter<Candidature> {
         String messageId = mMessagesRef.push().getKey();
 
         if (messageId != null) {
-            mMessagesRef.child(messageId).setValue(new Message("notification", employeurId, message, candidatId, offreId, getCurrentFormattedDate()));
+            mMessagesRef.child(messageId).setValue(new Message("notification", candidatId,employeurId, message, offreId, getCurrentFormattedDate()));
         }
     }
 

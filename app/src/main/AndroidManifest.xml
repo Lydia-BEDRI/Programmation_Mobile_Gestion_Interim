@@ -23,7 +23,7 @@
             android:name=".Activity.ContactEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DetailsOffreCandActivity"
+            android:name=".Activity.ContactCandActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.VoirCandidatureUserActivity"

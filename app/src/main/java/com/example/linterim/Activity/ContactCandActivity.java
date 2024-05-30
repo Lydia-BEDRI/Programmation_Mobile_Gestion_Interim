@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.linterim.Helpers.MenuCandidatManager;
+import com.example.linterim.Helpers.MenuEmployeurManager;
 import com.example.linterim.Models.Message;
 import com.example.linterim.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,20 +22,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class ContactEmpActivity extends AppCompatActivity {
-
+public class ContactCandActivity extends AppCompatActivity {
+    private EditText editTextNomPrenomCandidat, editTextMessage;
+    private AppCompatButton button_envoyer;
     private FirebaseAuth mAuth;
     private DatabaseReference mMessagesRef;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contact_employeur);
-        View rootView = findViewById(android.R.id.content);
-        MenuCandidatManager.setupMenuItems(rootView, this);
-        ImageView backBtn = findViewById(R.id.backBtn);
+        setContentView(R.layout.contact_candidat);
 
-        // Handle the back button
+        View rootView = findViewById(android.R.id.content);
+        MenuEmployeurManager.setupMenuItems(rootView, this);
+
+        ImageView backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,39 +45,39 @@ public class ContactEmpActivity extends AppCompatActivity {
             }
         });
 
+        editTextNomPrenomCandidat = findViewById(R.id.editTextNomPrenomCandidat);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        button_envoyer = findViewById(R.id.button_envoyer);
+
         mAuth = FirebaseAuth.getInstance();
         mMessagesRef = FirebaseDatabase.getInstance().getReference().child("Messages");
 
-        EditText editTextNomEntreprise = findViewById(R.id.editTextNomEntreprise);
-        EditText editTextMessage = findViewById(R.id.editTextMessage);
-        AppCompatButton button_envoyer = findViewById(R.id.button_envoyer);
+        // Récupérer les données depuis l'intent
+        Intent intent = getIntent();
+        String candidatNomPrenom = intent.getStringExtra("candidat_nom_prenom");
+        String candidatId = intent.getStringExtra("candidat_id");
+        String offreId = intent.getStringExtra("offre_id");
 
-        // Récupérer le nom de l'entreprise depuis l'intent
-        String nomEntreprise = getIntent().getStringExtra("nomEntreprise");
-        // Placer le nom de l'entreprise dans le champ "Nom de l'entreprise"
-        editTextNomEntreprise.setText(nomEntreprise);
-        // Rendre le champ non modifiable
-        editTextNomEntreprise.setEnabled(false);
+        // Prérémplir le champ et le rendre non modifiable
+        editTextNomPrenomCandidat.setText(candidatNomPrenom);
+        editTextNomPrenomCandidat.setEnabled(false);
 
         button_envoyer.setOnClickListener(v -> {
-            String employeurId = getIntent().getStringExtra("employeurId");
-            String offreId = getIntent().getStringExtra("offreId");
-
             String messageContent = editTextMessage.getText().toString();
-            String candidatId = mAuth.getCurrentUser().getUid();
+            String employeurId = mAuth.getCurrentUser().getUid();
             String currentDate = getCurrentFormattedDate();
 
             // Confirmation de l'envoi du message
             new AlertDialog.Builder(this)
                     .setTitle("Confirmation")
-                    .setMessage("Voulez-vous envoyer ce message à " + nomEntreprise + " ?")
+                    .setMessage("Voulez-vous envoyer ce message à " + candidatNomPrenom + " ?")
                     .setPositiveButton("Envoyer", (dialog, which) -> {
                         // Envoi du message
-                        sendMessage(candidatId, employeurId, messageContent, offreId, currentDate);
+                        sendMessage(employeurId, candidatId, messageContent, offreId, currentDate);
 
-                        // Redirection vers DashboardCandidatActivity
-                        Intent intent = new Intent(ContactEmpActivity.this, DashboardCandidatActivity.class);
-                        startActivity(intent);
+                        // Redirection vers une autre activité ou un message de confirmation
+                        Intent dashboardIntent = new Intent(ContactCandActivity.this, DashboardEmployeurActivity.class);
+                        startActivity(dashboardIntent);
                         finish(); // Ferme l'activité actuelle
                     })
                     .setNegativeButton("Annuler", null)

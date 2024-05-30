@@ -114,7 +114,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonVoir"
         android:layout_marginTop="16dp"
-
+        style="@android:style/Widget.Button"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="Voir"

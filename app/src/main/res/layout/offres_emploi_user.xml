@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="66dp"
+            android:layout_marginTop="10dp"
             android:saveEnabled="false">
 
             <LinearLayout
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="Offres d'emploi basées sur votre position géographique"
+                    android:text="Visualiser les offres d'emploi les plus récentes"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:layout_marginBottom="16dp">
 
             <EditText
-                android:id="@+id/editTextPersonName"
+                android:id="@+id/editTextMetierRech"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="0.33"
@@ -75,7 +75,7 @@
                 />
 
             <EditText
-                android:id="@+id/editTextPersonNam"
+                android:id="@+id/editTextVilleRech"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="0.33"
@@ -89,7 +89,7 @@
                 />
 
             <ImageView
-                android:id="@+id/distanceSpinner"
+                android:id="@+id/Rechercher"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"

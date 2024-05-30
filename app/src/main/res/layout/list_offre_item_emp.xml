@@ -57,6 +57,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
+        style="@android:style/Widget.Button"
         android:id="@+id/buttonVoir"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -78,6 +79,7 @@
         android:layout_marginLeft="24dp">
 
         <androidx.appcompat.widget.AppCompatButton
+            style="@android:style/Widget.Button"
             android:id="@+id/buttonModifier"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
@@ -89,6 +91,7 @@
             android:textColor="@color/white"
             android:layout_marginBottom="32dp"/>
         <androidx.appcompat.widget.AppCompatButton
+            style="@android:style/Widget.Button"
             android:id="@+id/buttonSuppr"
             android:layout_width="wrap_content"
             android:layout_height="45dp"

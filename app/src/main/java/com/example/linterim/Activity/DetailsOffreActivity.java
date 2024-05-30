@@ -1,5 +1,6 @@
 package com.example.linterim.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,8 @@ public class DetailsOffreActivity extends AppCompatActivity {
     private TextView textViewConditionsTravailOffreD;
    private TextView textViewTitreOffreD;
 
+    private TextView textViewDatePublication;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +66,7 @@ public class DetailsOffreActivity extends AppCompatActivity {
         textViewMissionsPOffreD = findViewById(R.id.textViewMissionsPOffreD);
         textViewProfilRechOffreD = findViewById(R.id.textViewProfilRechOffreD);
         textViewConditionsTravailOffreD = findViewById(R.id.textViewConditionsTravailOffreD);
-
+        textViewDatePublication = findViewById(R.id.textViewDatePublication);
         // Extraire l'ID de l'offre de l'intent
         if (getIntent() != null && getIntent().hasExtra("offreId")) {
             String offreId = getIntent().getStringExtra("offreId");
@@ -116,6 +119,7 @@ public class DetailsOffreActivity extends AppCompatActivity {
                 // Mettre à jour les TextView avec les détails de l'offre
                 if (offre != null) {
                     textViewTitreOffreD.setText(offre.getTitre());
+                    textViewDatePublication.setText("Publiée le" + offre.getDate_publication());
                     textViewDescriptionOffreD.setText(offre.getDescription());
                     textViewLieuOffreD.setText(offre.getLieu());
                     textViewRemunerationOffreD.setText(offre.getRemuneration());

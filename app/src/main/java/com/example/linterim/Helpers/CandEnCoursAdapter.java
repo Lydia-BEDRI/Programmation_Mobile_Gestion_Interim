@@ -31,8 +31,8 @@ public class CandEnCoursAdapter extends ArrayAdapter<Candidature> {
     private DatabaseReference mCandidatRef;
     private DatabaseReference mOffreRef;
 
-    public CandEnCoursAdapter(@NonNull Context context, int resource,@NonNull ArrayList<Candidature> arrayList) {
-        super(context, resource,arrayList);
+    public CandEnCoursAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Candidature> arrayList) {
+        super(context, resource, arrayList);
         this.mContext = context;
         this.mResource = resource;
         this.mCandidatRef = FirebaseDatabase.getInstance().getReference().child("Candidats");
@@ -64,40 +64,48 @@ public class CandEnCoursAdapter extends ArrayAdapter<Candidature> {
                     Candidat candidat = snapshot.getValue(Candidat.class);
                     if (candidat != null) {
                         nomPrenom.setText(candidat.getNom() + " " + candidat.getPrenom());
-                        dateNaissance.setText(candidat.getDateNaissance());
+                        dateNaissance.setText(candidat.getDateNaissance() != null ? candidat.getDateNaissance() : "Non Disponible");
 
+                        // Récupérer les informations de l'offre
+                        mOffreRef.child(offre_Id).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Offre offre = snapshot.getValue(Offre.class);
+                                if (offre != null) {
+                                    titreOffreCandEnCours.setText(offre.getTitre());
+
+                                    // Transmettre les informations via l'intent
+                                    buttonVoirCandidature.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(mContext, VoirCandidatureEmpActivity.class);
+                                            intent.putExtra("candidature_id", currentCandidature.getCandidature_id());
+                                            intent.putExtra("offre_titre", offre.getTitre());
+                                            intent.putExtra("offre_date", offre.getDate_publication());
+                                            intent.putExtra("candidat_nom_prenom", candidat.getNom() + " " + candidat.getPrenom());
+                                            intent.putExtra("date_candidature", currentCandidature.getDate_candidature());
+                                            intent.putExtra("candidat_date_naissance", candidat.getDateNaissance() != null ? candidat.getDateNaissance() : "Non Disponible");
+                                            intent.putExtra("candidat_nationalite", candidat.getNationalite() != null ? candidat.getNationalite() : "Non Disponible");
+                                            intent.putExtra("candidat_cv", candidat.getCvUrl());
+                                            intent.putExtra("candidat_lettre_motivation", currentCandidature.getLettre_motivation());
+
+                                            mContext.startActivity(intent);
+                                        }
+                                    });
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // Handle possible errors.
+                            }
+                        });
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     // Handle possible errors.
-                }
-            });
-
-            // Récupérer les informations de l'offre
-            mOffreRef.child(offre_Id).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Offre offre = snapshot.getValue(Offre.class);
-                    if (offre != null) {
-                        titreOffreCandEnCours.setText(offre.getTitre());
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle possible errors.
-                }
-            });
-
-            buttonVoirCandidature.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Lancer VoirCandidatureEmpActivity avec les informations nécessaires
-                    Intent intent = new Intent(mContext, VoirCandidatureEmpActivity.class);
-                    intent.putExtra("candidature_id", currentCandidature.getCandidature_id());
-                    mContext.startActivity(intent);
                 }
             });
         }

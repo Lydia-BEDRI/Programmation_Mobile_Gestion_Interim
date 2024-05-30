@@ -51,6 +51,18 @@
             <!-- Vos autres vues TextView et LinearLayout ici -->
 
         <TextView
+            android:id="@+id/textViewDatePublication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#00BCD4"
+            android:layout_marginBottom="5dp"
+            android:text="Publiée le "
+            />
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
