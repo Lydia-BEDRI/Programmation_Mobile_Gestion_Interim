@@ -23,6 +23,9 @@
             android:name=".Activity.ContactEmpActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.DetailsOffreCandActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.VoirCandidatureUserActivity"
             android:exported="false" />
         <activity

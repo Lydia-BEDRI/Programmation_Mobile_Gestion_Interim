@@ -34,13 +34,12 @@ public class ContactEmpActivity extends AppCompatActivity {
         View rootView = findViewById(android.R.id.content);
         MenuCandidatManager.setupMenuItems(rootView, this);
         ImageView backBtn = findViewById(R.id.backBtn);
+        // Handle the back button
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the back button click
-                if (getFragmentManager() != null) {
-                    getFragmentManager().popBackStack();
-                }
+                // Close the current activity to return to the previous activity
+                finish();
             }
         });
 

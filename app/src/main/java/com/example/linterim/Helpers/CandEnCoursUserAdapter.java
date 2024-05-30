@@ -104,11 +104,50 @@ public class CandEnCoursUserAdapter extends ArrayAdapter<Candidature> {
         buttonVoir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, VoirCandidatureUserActivity.class);
-                intent.putExtra("candidature_id", currentCandidature.getCandidature_id());
-                mContext.startActivity(intent);
+                mOffreRef.child(currentCandidature.getOffre_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Offre offre = snapshot.getValue(Offre.class);
+                        if (offre != null) {
+                            Intent intent = new Intent(mContext, VoirCandidatureUserActivity.class);
+                            intent.putExtra("candidature_id", currentCandidature.getCandidature_id());
+                            intent.putExtra("offre_titre", offre.getTitre());
+                            intent.putExtra("offre_description", offre.getDescription());
+                            intent.putExtra("offre_lieu", offre.getLieu());
+                            intent.putExtra("offre_remuneration", offre.getRemuneration());
+                            intent.putExtra("offre_type_contrat", offre.getType_contract());
+                            intent.putExtra("offre_periode", offre.getPeriode());
+                            intent.putExtra("offre_missions", offre.getMissions_principales());
+                            intent.putExtra("offre_profil_recherche", offre.getProfil_recherche());
+                            //intent.putExtra("offre_conditions_travail", offre.getConditions_travail());
+                            intent.putExtra("date_candidature", currentCandidature.getDate_candidature());
+
+                            mEmployeurRef.child(offre.getEmployeur_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot employeurSnapshot) {
+                                    Employeur employeur = employeurSnapshot.getValue(Employeur.class);
+                                    if (employeur != null) {
+                                        intent.putExtra("employeur_nom", employeur.getNom_entreprise());
+                                    }
+                                    mContext.startActivity(intent);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    // Handle potential errors here
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle potential errors here
+                    }
+                });
             }
         });
+
 
         return convertView;
     }
