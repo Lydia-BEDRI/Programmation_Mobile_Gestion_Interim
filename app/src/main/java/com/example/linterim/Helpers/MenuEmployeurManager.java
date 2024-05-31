@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.example.linterim.Activity.DashboardEmployeurActivity;
-import com.example.linterim.Activity.GestionCandidaturesEmployeurActivity;
-import com.example.linterim.Activity.GestionOffresEmployeurActivity;
-import com.example.linterim.Activity.ProfilEmployeurActivity;
+import com.example.linterim.Activities.DashboardEmployeurActivity;
+import com.example.linterim.Activities.GestionCandidaturesEmployeurActivity;
+import com.example.linterim.Activities.GestionOffresEmployeurActivity;
+import com.example.linterim.Activities.ProfilEmployeurActivity;
 import com.example.linterim.R;
 
 public class MenuEmployeurManager {

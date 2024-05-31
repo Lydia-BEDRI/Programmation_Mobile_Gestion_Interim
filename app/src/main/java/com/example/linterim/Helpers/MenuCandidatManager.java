@@ -5,9 +5,9 @@ package com.example.linterim.Helpers;
         import android.view.View;
         import android.widget.LinearLayout;
 
-        import com.example.linterim.Activity.DashboardCandidatActivity;
-        import com.example.linterim.Activity.GestionCandidaturesCandidatActivity;
-        import com.example.linterim.Activity.ProfilCandidatActivity;
+        import com.example.linterim.Activities.DashboardCandidatActivity;
+        import com.example.linterim.Activities.GestionCandidaturesCandidatActivity;
+        import com.example.linterim.Activities.ProfilCandidatActivity;
         import com.example.linterim.R;
 
 public class MenuCandidatManager {

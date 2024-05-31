@@ -30,85 +30,88 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <activity
-            android:name=".Activity.BaseActivity"
+            android:name=".Activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MessagesEmpActivity"
+            android:name=".Activities.MessagesEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MessagesCandidatActivity"
+            android:name=".Activities.MessagesCandidatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ContactEmpActivity"
+            android:name=".Activities.ContactEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ContactCandActivity"
+            android:name=".Activities.ContactCandActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.VoirCandidatureUserActivity"
+            android:name=".Activities.VoirCandidatureUserActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ContactCandidatActivity"
+            android:name=".Activities.ContactCandidatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.VoirCandidatureEmpActivity"
+            android:name=".Activities.VoirCandidatureEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SignupActivity"
+            android:name=".Activities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LocationActivity"
+            android:name=".Activities.DetailsOffreAnonymousActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.AnonymousActivity"
+            android:name=".Activities.LocationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.EmployerActivity"
+            android:name=".Activities.AnonymousActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.JobSeekerActivity"
+            android:name=".Activities.EmployerActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DashboardEmployeurActivity"
+            android:name=".Activities.JobSeekerActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DashboardCandidatActivity"
+            android:name=".Activities.DashboardEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ProfilCandidatActivity"
+            android:name=".Activities.DashboardCandidatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.GestionCandidaturesCandidatActivity"
+            android:name=".Activities.ProfilCandidatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.GestionCandidaturesEmployeurActivity"
+            android:name=".Activities.GestionCandidaturesCandidatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.GestionOffresEmployeurActivity"
+            android:name=".Activities.GestionCandidaturesEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ProfilEmployeurActivity"
+            android:name=".Activities.GestionOffresEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DetailsOffreActivity"
+            android:name=".Activities.ProfilEmployeurActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ModifierOffreActivity"
+            android:name=".Activities.DetailsOffreActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.VoirOffreEmpActivity"
+            android:name=".Activities.ModifierOffreActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.PostulerOffreActivity"
+            android:name=".Activities.VoirOffreEmpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.CreerOffreActivity"
+            android:name=".Activities.PostulerOffreActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Activities.CreerOffreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
