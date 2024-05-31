@@ -23,10 +23,7 @@ Pour installer et exécuter l'application, suivez ces étapes :
 
 1. Clonez ce dépôt GitHub sur votre machine locale :
 
-git clone https://github.com/Lydia-BEDRI/Programmation_Mobile_Gestion_Interim.git
-
-markdown
-
+`git clone https://github.com/Lydia-BEDRI/Programmation_Mobile_Gestion_Interim.git`
 
 2. Ouvrez le projet dans Android Studio.
 
