@@ -50,3 +50,4 @@ markdown
 ## Contenu du Répertoire
 
 - **app/Maquettes/** : Ce répertoire contient toutes les maquettes de l'application au format SVG.
+- **Rapports/** : Contient les trois versions des rapports du projet à remettre.
