@@ -16,7 +16,7 @@ Le projet de Programmation Mobile (HAI811I) consiste à développer une applicat
 3. **Employeurs** :
    - Dépôt d'offres d'emploi.
    - Gestion des offres déposées.
-   - Gestion des candidatures (en attente, acceptées).
+   - Gestion des candidatures (en attente, acceptées, ...etc).
 
 ## Installation
 Pour installer et exécuter l'application, suivez ces étapes :
@@ -46,5 +46,5 @@ Pour installer et exécuter l'application, suivez ces étapes :
 
 ## Contenu du Répertoire
 
-- **app/Maquettes/** : Ce répertoire contient toutes les maquettes de l'application au format SVG.
+- **Maquettes/** : Ce répertoire contient toutes les maquettes de l'application au format SVG.
 - **Rapports/** : Contient les trois versions des rapports du projet à remettre.
