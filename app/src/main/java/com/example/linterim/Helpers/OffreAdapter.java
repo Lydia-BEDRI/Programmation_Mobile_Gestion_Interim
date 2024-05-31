@@ -42,13 +42,15 @@ public class OffreAdapter extends ArrayAdapter<Offre> {
 
         TextView periode = convertView.findViewById(R.id.textViewPeriodeOffre);
 
+        TextView textViewDatePublication = convertView.findViewById(R.id.textViewDatePublication);
+
         titreffre.setText(getItem(position).getTitre());
         desription.setText(getItem(position).getDescription());
         lieu.setText(getItem(position).getLieu());
         remuneration.setText(getItem(position).getRemuneration());
         typeContrat.setText(getItem(position).getType_contract());
         periode.setText(getItem(position).getPeriode());
-
+        textViewDatePublication.setText(getItem(position).getDate_publication());
 
         return convertView;
 

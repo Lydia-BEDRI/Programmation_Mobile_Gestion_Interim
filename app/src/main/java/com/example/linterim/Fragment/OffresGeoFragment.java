@@ -28,6 +28,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.linterim.Activity.DetailsOffreActivity;
+import com.example.linterim.Activity.DetailsOffreAnonymousActivity;
 import com.example.linterim.Helpers.OffreAdapter;
 import com.example.linterim.Models.Offre;
 import com.example.linterim.R;
@@ -129,7 +130,7 @@ public class OffresGeoFragment extends Fragment {
                 String offreId = filteredList.get(position).getAnnonce_id();
 
                 // Créer une intention pour ouvrir DetailsOffreActivity
-                Intent intent = new Intent(getActivity(), DetailsOffreActivity.class);
+                Intent intent = new Intent(getActivity(), DetailsOffreAnonymousActivity.class);
                 intent.putExtra("offreId", offreId);
                 intent.putExtra("Anonyme", true);
 

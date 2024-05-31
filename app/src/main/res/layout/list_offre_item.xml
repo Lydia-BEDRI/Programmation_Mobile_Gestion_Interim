@@ -23,12 +23,22 @@
     android:textColor="@color/black"
     android:textSize="22sp"
     android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textViewDatePublication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#00BCD4"
+        android:text="date "
+        />
 
 <TextView
     android:id="@+id/textViewDescriptionOffre"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="8dp"
     android:singleLine="false"
     android:maxLines="2"
     android:ellipsize="end"

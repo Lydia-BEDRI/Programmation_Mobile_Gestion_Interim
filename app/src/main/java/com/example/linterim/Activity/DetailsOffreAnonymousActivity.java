@@ -1,6 +1,5 @@
 package com.example.linterim.Activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,21 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.linterim.Helpers.MenuCandidatManager;
 import com.example.linterim.Models.Offre;
 import com.example.linterim.R;
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class DetailsOffreActivity extends AppCompatActivity {
+public class DetailsOffreAnonymousActivity extends AppCompatActivity {
     private TextView textViewDescriptionOffreD;
     private TextView textViewLieuOffreD;
     private TextView textViewRemunerationOffreD;
@@ -34,19 +30,14 @@ public class DetailsOffreActivity extends AppCompatActivity {
     private TextView textViewMissionsPOffreD;
     private TextView textViewProfilRechOffreD;
     private TextView textViewConditionsTravailOffreD;
-   private TextView textViewTitreOffreD;
+    private TextView textViewTitreOffreD;
 
     private TextView textViewDatePublication;
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.details_offre);
+        setContentView(R.layout.details_offre_anonyme);
 
-        View rootView = findViewById(android.R.id.content);
-        MenuCandidatManager.setupMenuItems(rootView,this);
-
-        // gerer le back button
         ImageView backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +46,7 @@ public class DetailsOffreActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         // Récupérer les vues
         textViewTitreOffreD = findViewById(R.id.textViewTitreOffreD);
@@ -67,7 +59,8 @@ public class DetailsOffreActivity extends AppCompatActivity {
         textViewProfilRechOffreD = findViewById(R.id.textViewProfilRechOffreD);
         textViewConditionsTravailOffreD = findViewById(R.id.textViewConditionsTravailOffreD);
         textViewDatePublication = findViewById(R.id.textViewDatePublication);
-        // Extraire l'ID de l'offre de l'intent
+
+
         if (getIntent() != null && getIntent().hasExtra("offreId")) {
             String offreId = getIntent().getStringExtra("offreId");
             Log.d("----Details------",offreId);
@@ -75,35 +68,25 @@ public class DetailsOffreActivity extends AppCompatActivity {
             // Utiliser l'ID pour afficher les détails de l'offre correspondante
             afficherDetailsOffre(offreId);
         }
-        if(getIntent() != null && getIntent().hasExtra("Anonyme")){
-            BottomAppBar bottomAppBar = findViewById(R.id.bottomAppBar);
-            bottomAppBar.setVisibility(View.GONE);
-        }
+
+
 
         Button postulerMaintenantBtn = findViewById(R.id.button_postuler_maintenant);
         postulerMaintenantBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isUserAuthenticated()) {
-                    // L'utilisateur est authentifié, lancer PostulerOffreActivity
-                    Intent intent = new Intent(DetailsOffreActivity.this, PostulerOffreActivity.class);
-                    String offreId = getIntent().getStringExtra("offreId");
-                    intent.putExtra("offreId", offreId);
-                    startActivity(intent);
-                } else {
+
                     // Afficher un toast demandant à l'utilisateur de s'inscrire ou de s'authentifier
-                    Toast.makeText(DetailsOffreActivity.this, "Veuillez vous connecter ou vous inscrire pour postuler.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsOffreAnonymousActivity.this, "Veuillez vous connecter ou vous inscrire pour postuler.", Toast.LENGTH_SHORT).show();
 
                     // Redirection vers MainActivity pour s'authentifier ou s'inscrire
-                    Intent intent = new Intent(DetailsOffreActivity.this, MainActivity.class);
+                    Intent intent = new Intent(DetailsOffreAnonymousActivity.this, MainActivity.class);
                     startActivity(intent);
-                }
+
             }
         });
 
     }
-
-    // Méthode pour afficher les détails de l'offre correspondante
     private void afficherDetailsOffre(String offreId) {
         // Vous devez récupérer les détails de l'offre à partir de votre source de données (base de données, API, etc.)
         // et ensuite mettre à jour les TextView avec ces détails
@@ -128,39 +111,16 @@ public class DetailsOffreActivity extends AppCompatActivity {
                     textViewMissionsPOffreD.setText(offre.getMissions_principales());
                     textViewProfilRechOffreD.setText(offre.getProfil_recherche());
                     textViewConditionsTravailOffreD.setText("Type de contract : "+offre.getType_contract()+
-                                                            "\nLieu de travail : "+offre.getLieu()+
-                                                            "\nSalaire : "+offre.getRemuneration());
+                            "\nLieu de travail : "+offre.getLieu()+
+                            "\nSalaire : "+offre.getRemuneration());
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Gestion des erreurs de récupération de données
-                Toast.makeText(DetailsOffreActivity.this, "Une erreur s'est produite lors de la récupération des données ! ", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailsOffreAnonymousActivity.this, "Une erreur s'est produite lors de la récupération des données ! ", Toast.LENGTH_LONG).show();
             }
         });
     }
-
-
-    // Méthode pour vérifier si l'utilisateur est authentifié avec Firebase Authentication
-    private boolean isUserAuthenticated() {
-        // Récupérer l'instance de FirebaseAuth
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        // Récupérer l'utilisateur actuellement connecté
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser != null) {
-            // Utilisateur actuellement connecté
-            Log.d("Auth", "Utilisateur connecté: " + currentUser.getUid());
-            return true;
-        } else {
-            // Aucun utilisateur connecté
-            Log.d("Auth", "Aucun utilisateur connecté");
-            return false;
-        }
-    }
-
-
-
 }
