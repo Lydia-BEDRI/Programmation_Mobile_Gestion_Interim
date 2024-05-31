@@ -101,7 +101,7 @@ public class CandidatSignup2Fragment extends Fragment {
                     Log.d("BundleInfo", "Ville : " + bundle.getString("ville"));
 
                 // Créer une instance de EmployeurSignup2Fragment et lui passer le Bundle
-                CandidatSignup3Fragment fragment = new CandidatSignup3Fragment();
+                CandidatSignup3Fragment fragment = new CandidatSignup3Fragment ();
                 fragment.setArguments(bundle);
 
                 // Remplacer le fragment actuel par EmployeurSignup2Fragment

@@ -142,39 +142,18 @@ public class VoirCandidatureEmpActivity extends AppCompatActivity {
         });
     }
 
-    private void downloadAndOpenPDF(String gsUrl) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl(gsUrl);
-
-        try {
-            File localFile = File.createTempFile("tempfile", ".pdf");
-
-            storageRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Uri path = FileProvider.getUriForFile(VoirCandidatureEmpActivity.this, BuildConfig.APPLICATION_ID + ".fileprovider", localFile);
-
-                    Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-                    pdfIntent.setDataAndType(path, "application/pdf");
-                    pdfIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                    try {
-                        startActivity(pdfIntent);
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(VoirCandidatureEmpActivity.this, "No application to view PDF", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(VoirCandidatureEmpActivity.this, "Failed to download file", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (IOException e) {
-            Toast.makeText(this, "Failed to create temporary file", Toast.LENGTH_SHORT).show();
+    @SuppressLint("IntentReset")
+    private void downloadAndOpenPDF(String url) {
+        if (url != null && !url.isEmpty()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setType("application/pdf");
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Le fichier demandé n'est pas mis par le candidat", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     private void changeCandidatureStatus(String candidatureId, String newStatus) {

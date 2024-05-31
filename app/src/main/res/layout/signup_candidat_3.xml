@@ -50,21 +50,21 @@
                 android:layout_marginStart="16dp"/>
 
 
-           <!-- <EditText
-                android:id="@+id/editTextCVCandidat"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:ems="10"
-                android:inputType="text"
-                android:background="@drawable/edittext_background"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:hint="Entrez votre CV"
-                android:padding="16dp"
-                android:textColorHint="#636363"
-                android:textSize="16sp"
-                />-->
+            <!-- <EditText
+                 android:id="@+id/editTextCVCandidat"
+                 android:layout_width="match_parent"
+                 android:layout_height="55dp"
+                 android:ems="10"
+                 android:inputType="text"
+                 android:background="@drawable/edittext_background"
+                 android:layout_marginTop="32dp"
+                 android:layout_marginEnd="32dp"
+                 android:layout_marginStart="32dp"
+                 android:hint="Entrez votre CV"
+                 android:padding="16dp"
+                 android:textColorHint="#636363"
+                 android:textSize="16sp"
+                 />-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_uploadCV"
@@ -98,14 +98,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
-            android:background="@drawable/edittext_background"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:hint="Entrez votre commentaire"
-            android:padding="16dp"
-            android:textSize="16sp"
-            android:textColorHint="#636363"/>
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Entrez votre commentaire"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textColorHint="#636363"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_finaliserInscCandidat"

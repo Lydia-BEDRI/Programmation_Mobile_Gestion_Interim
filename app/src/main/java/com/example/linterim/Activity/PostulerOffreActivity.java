@@ -49,6 +49,8 @@ public class PostulerOffreActivity extends AppCompatActivity {
     private StorageReference storageReferenceCV, storageReferenceLettreM;
 
     private Uri selectedCVURI, selectedLettreMURI;
+    private String lettreMotivationUrl;
+    private String cvUrl;
 
     private ActivityResultLauncher<Intent> resultLauncherCV;
     private ActivityResultLauncher<Intent> resultLauncherLettreM;
@@ -179,6 +181,8 @@ public class PostulerOffreActivity extends AppCompatActivity {
         resultLauncher.launch(Intent.createChooser(intent, "Select PDF"));
     }
 
+
+
     private void uploadFile(Uri fileUri, String folder, TextView infoTextView) {
         if (fileUri != null) {
             ProgressDialog progressDialog = new ProgressDialog(this);
@@ -196,6 +200,13 @@ public class PostulerOffreActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Fichier téléversé avec succès", Toast.LENGTH_SHORT).show();
                                 String urlTronquee = url.substring(0, Math.min(url.length(), 10)) + "...";
                                 infoTextView.setText(urlTronquee);
+
+                                // Enregistrer l'URL Firebase Storage du CV
+                                if (folder.equals("CVs")) {
+                                    cvUrl = url;
+                                } else if (folder.equals("Letters")) {
+                                    lettreMotivationUrl = url;
+                                }
                             }).addOnFailureListener(e -> {
                                 progressDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Erreur lors de la récupération de l'URL de téléchargement", Toast.LENGTH_SHORT).show();
@@ -239,8 +250,8 @@ public class PostulerOffreActivity extends AppCompatActivity {
                             candidat.setNationalite(nationalite);
 
                             // Ajouter l'URL du CV s'il existe
-                            if (selectedCVURI != null) {
-                                candidat.setCvUrl(selectedCVURI.toString());
+                            if (cvUrl != null) {
+                                candidat.setCvUrl(cvUrl);
                             }
 
                             candidatRef.setValue(candidat).addOnCompleteListener(task -> {
@@ -268,6 +279,7 @@ public class PostulerOffreActivity extends AppCompatActivity {
         }
     }
 
+
     private void createCandidature(String candidatId) {
         String offreId = getIntent().getStringExtra("offreId");
         if (offreId == null) {
@@ -278,22 +290,31 @@ public class PostulerOffreActivity extends AppCompatActivity {
         DatabaseReference candidaturesRef = FirebaseDatabase.getInstance().getReference().child("Candidatures");
         String candidatureId = candidaturesRef.push().getKey();
 
+        // Formater la date actuelle au format jj/mm/aaaa
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String currentDate = dateFormat.format(new Date(System.currentTimeMillis()));
+
         Candidature nouvelleCandidature = new Candidature();
         nouvelleCandidature.setCandidature_id(candidatureId);
         nouvelleCandidature.setOffre_id(offreId);
         nouvelleCandidature.setCandidat_id(candidatId);
-        nouvelleCandidature.setLettre_motivation(selectedLettreMURI != null ? selectedLettreMURI.toString() : "");
-        nouvelleCandidature.setStatut("En attente");
-        nouvelleCandidature.setDate_candidature(String.valueOf(System.currentTimeMillis()));
+        nouvelleCandidature.setLettre_motivation(lettreMotivationUrl != null ? lettreMotivationUrl : "");
+        nouvelleCandidature.setStatut("en attente");
+        nouvelleCandidature.setDate_candidature(currentDate);
 
         candidaturesRef.child(candidatureId).setValue(nouvelleCandidature).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 // La candidature a été créée avec succès
                 Toast.makeText(PostulerOffreActivity.this, "Candidature envoyée avec succès", Toast.LENGTH_SHORT).show();
+                // Redirection vers GestionCandidaturesCandidatActivity
+                Intent intent = new Intent(PostulerOffreActivity.this, GestionCandidaturesCandidatActivity.class);
+                startActivity(intent);
+                finish(); // Optionnel : fermez cette activité pour empêcher l'utilisateur de revenir en arrière
             } else {
                 // Une erreur s'est produite lors de la création de la candidature
                 Toast.makeText(PostulerOffreActivity.this, "Erreur lors de l'envoi de la candidature", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

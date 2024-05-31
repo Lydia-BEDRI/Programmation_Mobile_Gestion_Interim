@@ -1,8 +1,7 @@
 package com.example.linterim.Fragment;
-
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -33,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -40,14 +40,14 @@ public class CandidatSignup3Fragment extends Fragment {
 
     private FirebaseAuth auth;
     private EditText commentaire;
-    private AppCompatButton btn;
-    private StorageReference storageReference;
-    private Uri selectedPdf;
-    private ActivityResultLauncher<Intent> resultLauncher;
-    private static final int PICK_PDF_REQUEST = 1;
     private Button buttonUpload;
     private TextView textViewFilename;
+    private Uri cvUri;
+    private ProgressDialog progressDialog;
+    private String cvUrl;
+    private ActivityResultLauncher<Intent> resultLauncher;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.signup_candidat_3, container, false);
@@ -64,19 +64,18 @@ public class CandidatSignup3Fragment extends Fragment {
             }
         });
 
-       // cv = view.findViewById(R.id.editTextCVCandidat);
-
-        // traiter l'ajout d'un CV en PDF
-
+        // Initialiser les vues
         buttonUpload = view.findViewById(R.id.button_uploadCV);
         textViewFilename = view.findViewById(R.id.textview_filename);
+        commentaire = view.findViewById(R.id.editTextCommentaireCandidat);
+        AppCompatButton btn = view.findViewById(R.id.button_finaliserInscCandidat);
 
-
+        buttonUpload.setEnabled(true);
 
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFilePicker();
+                selectPDF();
             }
         });
 
@@ -84,39 +83,17 @@ public class CandidatSignup3Fragment extends Fragment {
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
-                        selectedPdf = result.getData().getData();
-                        String filePath = selectedPdf.getPath();
-                        textViewFilename.setText(filePath);
-
-                        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-                        progressDialog.setMessage("Uploading");
-                        progressDialog.show();
-                        storageReference = FirebaseStorage.getInstance().getReference().child("CVs").child(String.valueOf(System.currentTimeMillis()) + ".pdf");
-                        storageReference.putFile(selectedPdf).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String url = selectedPdf.toString();
-                                        Log.d("DownloadURL",url);
-                                        progressDialog.dismiss();
-                                        Toast.makeText(getActivity(), "fichier uploadé avec succès ", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
+                        Intent data = result.getData();
+                        cvUri = data.getData();
+                        textViewFilename.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/") + 1));
                     }
                 }
         );
 
-        commentaire = view.findViewById(R.id.editTextCommentaireCandidat);
-        btn = view.findViewById(R.id.button_finaliserInscCandidat);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Récupérer toutes les infos saisies
+                // Collecter les informations du candidat
                 Bundle args = getArguments();
                 if (args != null) {
                     String nom = args.getString("nom", "");
@@ -128,35 +105,35 @@ public class CandidatSignup3Fragment extends Fragment {
                     String numTel = args.getString("numTel", "");
                     String ville = args.getString("ville", "");
 
-                   // String cv_text = cv.getText().toString();
-                    String comment_text = commentaire.getText().toString();
-                    // Vérifier les champs obligatoires
-                    if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(prenom) && !TextUtils.isEmpty(adresseMail) && !TextUtils.isEmpty(motDePasse)) {
-                        // Créer un objet Candidat avec les informations obligatoires
-                        Candidat candidat = new Candidat(nom, prenom, adresseMail, motDePasse);
-                        if (!TextUtils.isEmpty(nationalite) ){
-                            candidat.setNationalite(nationalite);
-                        }
-                        if (!TextUtils.isEmpty(dateDeNaissance) ){
-                            candidat.setDateNaissance(dateDeNaissance);
-                        }
-                        if (!TextUtils.isEmpty(numTel) ){
-                            candidat.setTelephone(numTel);
-                        }
-                        if (!TextUtils.isEmpty(ville) ){
-                            candidat.setVille(ville);
-                        }
-                        if (selectedPdf != null ){
-                            candidat.setCvUrl(storageReference.toString());
-                        }
-                        if (!TextUtils.isEmpty(comment_text) ){
-                            candidat.setCommentaires(comment_text);
-                        }
-                        // Enregistrer le candidat dans la base de données
-                        registerCandidat(candidat);
-                    } else {
-                        Toast.makeText(getActivity(), "Veuillez remplir tous les champs obligatoires", Toast.LENGTH_SHORT).show();
+                    Candidat candidat = new Candidat(nom, prenom, adresseMail, motDePasse);
+                    if (!TextUtils.isEmpty(nationalite)) {
+                        candidat.setNationalite(nationalite);
                     }
+                    if (!TextUtils.isEmpty(dateDeNaissance)) {
+                        candidat.setDateNaissance(dateDeNaissance);
+                    }
+                    if (!TextUtils.isEmpty(numTel)) {
+                        candidat.setTelephone(numTel);
+                    }
+                    if (!TextUtils.isEmpty(ville)) {
+                        candidat.setVille(ville);
+                    }
+
+                    String comment_text = commentaire.getText().toString();
+                    if (!TextUtils.isEmpty(comment_text)) {
+                        candidat.setCommentaires(comment_text);
+                    }
+
+                    // Vérifier si un CV a été sélectionné
+                    if (cvUri != null) {
+                        // Télécharger le CV et enregistrer le candidat après
+                        uploadPDFFileFirebaseAndRegister(candidat, cvUri);
+                    } else {
+                        // Enregistrer directement le candidat sans CV
+                        registerCandidat(candidat);
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Veuillez remplir tous les champs obligatoires", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -164,11 +141,34 @@ public class CandidatSignup3Fragment extends Fragment {
         return view;
     }
 
-    private void openFilePicker() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("application/pdf");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        resultLauncher.launch(Intent.createChooser(intent, "Select PDF"));
+    private void uploadPDFFileFirebaseAndRegister(Candidat candidat, Uri data) {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Uploading");
+        progressDialog.show();
+        StorageReference reference = FirebaseStorage.getInstance().getReference().child("CVs").child(String.valueOf(System.currentTimeMillis()) + ".pdf");
+        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                uriTask.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        cvUrl = uri.toString();
+                        progressDialog.dismiss();
+                        if (candidat != null) {
+                            candidat.setCvUrl(cvUrl);
+                            registerCandidat(candidat);
+                        }
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                progressDialog.setMessage("Fichier uploadé.." + (int) progress + "%");
+            }
+        });
     }
 
     private void registerCandidat(Candidat candidat) {
@@ -177,10 +177,7 @@ public class CandidatSignup3Fragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Récupérer l'ID de l'utilisateur authentifié
                             String candidatId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                            // Enregistrer les informations dans la base de données
                             FirebaseDatabase.getInstance().getReference().child("Candidats")
                                     .child(candidatId).setValue(candidat)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -190,19 +187,25 @@ public class CandidatSignup3Fragment extends Fragment {
                                                 Toast.makeText(getActivity(), "Inscription sur la plateforme avec succès!", Toast.LENGTH_LONG).show();
                                                 Intent intent = new Intent(getActivity(), DashboardCandidatActivity.class);
                                                 startActivity(intent);
-                                                Log.d("CandidatSignup3Fragment", "Inscription à Realtime Database réussie !");
-                                                // Naviguer vers l'écran suivant ou afficher un message de succès
+                                                Log.d("Fragment3", "Inscription à Realtime Database réussie !");
                                             } else {
                                                 Toast.makeText(getActivity(), "Erreur lors de l'inscription: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                                Log.e("CandidatSignup3Fragment", "Inscription échouée à Realtime Database", task.getException());
+                                                Log.e("Fragment3", "Inscription échouée à Realtime Database", task.getException());
                                             }
                                         }
                                     });
                         } else {
                             Toast.makeText(getActivity(), "Erreur lors de l'inscription: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.e("CandidatSignup3Fragment", "Inscription échouée à FirebaseAuth", task.getException());
+                            Log.e("Fragment3", "Inscription échouée à FirebaseAuth", task.getException());
                         }
                     }
                 });
+    }
+
+    private void selectPDF() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("application/pdf");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        resultLauncher.launch(Intent.createChooser(intent, "Select PDF"));
     }
 }

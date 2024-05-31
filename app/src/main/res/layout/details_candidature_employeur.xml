@@ -150,6 +150,7 @@
                     android:singleLine="true"
                     android:text="Voir le CV"
                     android:textColor="@color/black"
+
                     android:textSize="18sp"
                     />
                 <TextView
@@ -161,6 +162,7 @@
                     android:singleLine="true"
                     android:text="Voir la Lettre de Motivation"
                     android:textColor="@color/black"
+
                     android:textSize="18sp"
                     />
 
